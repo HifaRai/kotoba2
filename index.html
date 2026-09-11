@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nihongo Learning Master - Minna no Nihongo II & Kanji N4</title>
+  <title>Nihongo Master - Minna no Nihongo II & Kanji N4</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts -->
@@ -31,7 +31,6 @@
               card: '#FFFFFF',
               text: '#4A4A68',
               muted: '#8C8C9A'
-            
             }
           },
           fontFamily: {
@@ -48,21 +47,7 @@
       background-color: #FAF8FC;
       color: #4A4A68;
       font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    /* Custom Pastel Buttons with Interactive Elevation */
-    .btn-pastel {
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      top: 0;
-    }
-    .btn-pastel:hover {
-      top: -3px;
-      box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-    }
-    .btn-pastel:active {
-      top: -1px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      -webkit-tap-highlight-color: transparent;
     }
 
     /* 3D Soft Pastel Button Effect */
@@ -70,11 +55,7 @@
       background-color: #C8B6FF;
       color: #3B2863;
       box-shadow: 0 4px 0 #A287F4;
-    }
-    .btn-3d-lavender:hover {
-      background-color: #BBA5FF;
-      box-shadow: 0 6px 0 #A287F4;
-      transform: translateY(-2px);
+      transition: all 0.1s ease;
     }
     .btn-3d-lavender:active {
       box-shadow: 0 1px 0 #A287F4;
@@ -85,11 +66,7 @@
       background-color: #A2D2FF;
       color: #1E3A5F;
       box-shadow: 0 4px 0 #7BB8F0;
-    }
-    .btn-3d-blue:hover {
-      background-color: #8FC4FF;
-      box-shadow: 0 6px 0 #7BB8F0;
-      transform: translateY(-2px);
+      transition: all 0.1s ease;
     }
     .btn-3d-blue:active {
       box-shadow: 0 1px 0 #7BB8F0;
@@ -100,11 +77,7 @@
       background-color: #FFD1DC;
       color: #5C2230;
       box-shadow: 0 4px 0 #F498AD;
-    }
-    .btn-3d-pink:hover {
-      background-color: #FFB3C6;
-      box-shadow: 0 6px 0 #F498AD;
-      transform: translateY(-2px);
+      transition: all 0.1s ease;
     }
     .btn-3d-pink:active {
       box-shadow: 0 1px 0 #F498AD;
@@ -115,11 +88,7 @@
       background-color: #BFFCC6;
       color: #1C4D25;
       box-shadow: 0 4px 0 #83E891;
-    }
-    .btn-3d-mint:hover {
-      background-color: #A9F9B2;
-      box-shadow: 0 6px 0 #83E891;
-      transform: translateY(-2px);
+      transition: all 0.1s ease;
     }
     .btn-3d-mint:active {
       box-shadow: 0 1px 0 #83E891;
@@ -132,7 +101,7 @@
     }
     .transform-style-3d {
       transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .backface-hidden {
       backface-visibility: hidden;
@@ -141,52 +110,48 @@
       transform: rotateY(180deg);
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
+    /* Hide Scrollbar for clean mobile UI */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
     }
-    ::-webkit-scrollbar-track {
-      background: #FAF8FC;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #E2D9F3;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #C8B6FF;
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-pastel-lavender selection:text-pastel-text">
+<body class="min-h-screen flex flex-col justify-between selection:bg-pastel-lavender">
 
-  <!-- Header / Navigation -->
-  <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-purple-100 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
-      <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('flashcard-kotoba')">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pastel-pink to-pastel-lavender flex items-center justify-center text-white text-xl font-bold shadow-sm">
-          🌸
-        </div>
-        <div>
-          <h1 class="font-bold text-lg text-gray-800 leading-tight">Nihongo Master</h1>
-          <p class="text-xs text-pastel-muted">MNN II (Bab 26-50) & Kanji N4</p>
+  <!-- Header Mobile Friendly -->
+  <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-purple-100 shadow-sm">
+    <div class="px-4 py-3">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2" onclick="switchTab('flashcard-kotoba')">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pastel-pink to-pastel-lavender flex items-center justify-center text-white text-lg font-bold shadow-sm">
+            🌸
+          </div>
+          <div>
+            <h1 class="font-bold text-base text-gray-800 leading-tight">Nihongo Master</h1>
+            <p class="text-[10px] text-pastel-muted">MNN II (Bab 26-50) & Kanji N4</p>
+          </div>
         </div>
       </div>
 
-      <!-- Main Navigation Tabs -->
-      <nav class="flex items-center gap-2 overflow-x-auto py-1 max-w-full">
-        <button id="nav-kotoba" onclick="switchTab('flashcard-kotoba')" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 btn-3d-pink">
+      <!-- Navigation Bar Horizonally Scrollable for Mobile -->
+      <nav class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+        <button id="nav-kotoba" onclick="switchTab('flashcard-kotoba')" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap btn-3d-pink flex items-center gap-1.5">
           <i class="fa-solid fa-book-bookmark"></i>
           <span>Kotoba</span>
         </button>
-        <button id="nav-kanji" onclick="switchTab('flashcard-kanji')" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 btn-3d-blue">
+        <button id="nav-kanji" onclick="switchTab('flashcard-kanji')" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap btn-3d-blue flex items-center gap-1.5">
           <i class="fa-solid fa-pen-nib"></i>
           <span>Kanji N4</span>
         </button>
-        <button id="nav-bunpou" onclick="switchTab('bunpou')" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 btn-3d-mint">
+        <button id="nav-bunpou" onclick="switchTab('bunpou')" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap btn-3d-mint flex items-center gap-1.5">
           <i class="fa-solid fa-layer-group"></i>
           <span>Bunpou</span>
         </button>
-        <button id="nav-kuis" onclick="switchTab('kuis')" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 btn-3d-lavender">
+        <button id="nav-kuis" onclick="switchTab('kuis')" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap btn-3d-lavender flex items-center gap-1.5">
           <i class="fa-solid fa-gamepad"></i>
           <span>Kuis</span>
         </button>
@@ -194,63 +159,58 @@
     </div>
   </header>
 
-  <!-- Main Content Area -->
-  <main class="max-w-5xl mx-auto px-4 py-8 flex-grow w-full">
+  <!-- Main Content -->
+  <main class="px-4 py-6 flex-grow max-w-lg mx-auto w-full">
 
     <!-- TAB 1: KOTOBA FLASHCARDS -->
-    <section id="tab-flashcard-kotoba" class="tab-content space-y-6">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-2xl border border-pink-100 shadow-sm">
-        <div>
-          <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
-            <span class="text-2xl">📚</span> Flashcard Kotoba
-          </h2>
-          <p class="text-sm text-pastel-muted">Kosakata Minna no Nihongo Bab 26 - 50</p>
+    <section id="tab-flashcard-kotoba" class="tab-content space-y-5">
+      <div class="bg-white p-3.5 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">📚</span>
+          <h2 class="text-sm font-bold text-gray-800">Flashcard Kotoba</h2>
         </div>
-        <div class="flex items-center gap-3 w-full sm:w-auto">
-          <label class="text-xs font-semibold text-gray-500 whitespace-nowrap">Pilih Bab:</label>
-          <select id="kotoba-bab-select" onchange="filterKotobaBab()" class="bg-pastel-bg border border-pink-200 text-gray-700 text-sm rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-pastel-pink-dark w-full sm:w-auto font-medium">
-            <!-- Dynamic Options -->
-          </select>
-        </div>
+        <select id="kotoba-bab-select" onchange="filterKotobaBab()" class="bg-pastel-bg border border-pink-200 text-gray-700 text-xs font-semibold rounded-xl px-2.5 py-1.5 outline-none">
+          <!-- Dynamic Bab Options -->
+        </select>
       </div>
 
-      <!-- Flashcard Display -->
-      <div class="flex flex-col items-center justify-center space-y-6">
-        <div class="w-full max-w-md h-72 perspective-1000 cursor-pointer" onclick="flipCard('kotoba-card')">
-          <div id="kotoba-card" class="relative w-full h-full transform-style-3d duration-500 rounded-3xl shadow-lg border border-pink-100">
+      <!-- Card Display -->
+      <div class="flex flex-col items-center space-y-5">
+        <div class="w-full h-72 perspective-1000 cursor-pointer" onclick="flipCard('kotoba-card')">
+          <div id="kotoba-card" class="relative w-full h-full transform-style-3d rounded-3xl shadow-md border border-pink-100">
             <!-- Front -->
-            <div class="absolute inset-0 backface-hidden bg-gradient-to-br from-white to-pink-50 rounded-3xl p-6 flex flex-col justify-between items-center text-center">
-              <span class="text-xs font-semibold px-3 py-1 bg-pastel-pink text-pink-800 rounded-full" id="kotoba-tag">Bab 26</span>
+            <div class="absolute inset-0 backface-hidden bg-gradient-to-br from-white to-pink-50 rounded-3xl p-5 flex flex-col justify-between items-center text-center">
+              <span class="text-[11px] font-bold px-3 py-1 bg-pastel-pink text-pink-900 rounded-full" id="kotoba-tag">Bab 26</span>
               <div class="space-y-2 my-auto">
                 <h3 class="text-4xl font-bold text-gray-800 font-jp" id="kotoba-kanji">診ます</h3>
-                <p class="text-xl text-pink-500 font-jp" id="kotoba-kana">みます</p>
+                <p class="text-lg font-bold text-pink-500 font-jp" id="kotoba-kana">みます</p>
               </div>
-              <p class="text-xs text-pastel-muted flex items-center gap-1">
-                <i class="fa-solid fa-rotate"></i> Klik untuk lihat arti
+              <p class="text-[11px] text-pastel-muted flex items-center gap-1">
+                <i class="fa-solid fa-rotate"></i> Ketuk untuk lihat arti
               </p>
             </div>
             <!-- Back -->
-            <div class="absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br from-pastel-pink/30 to-white rounded-3xl p-6 flex flex-col justify-between items-center text-center border-2 border-pastel-pink">
-              <span class="text-xs font-semibold px-3 py-1 bg-white text-pink-800 rounded-full shadow-sm">Arti Bahasa Indonesia</span>
+            <div class="absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br from-pastel-pink/20 to-white rounded-3xl p-5 flex flex-col justify-between items-center text-center border-2 border-pastel-pink">
+              <span class="text-[11px] font-bold px-3 py-1 bg-white text-pink-900 rounded-full shadow-sm">Arti</span>
               <div class="my-auto space-y-2">
-                <p class="text-2xl font-bold text-gray-800" id="kotoba-arti">memeriksa, memeriksa kesehatan</p>
-                <p class="text-xs text-gray-500 italic" id="kotoba-contoh">Dokter memeriksa pasien</p>
+                <p class="text-xl font-bold text-gray-800" id="kotoba-arti">memeriksa kesehatan</p>
+                <p class="text-xs text-gray-500 italic" id="kotoba-contoh">医者に診てもらいます</p>
               </div>
-              <p class="text-xs text-pastel-muted flex items-center gap-1">
-                <i class="fa-solid fa-rotate"></i> Klik untuk lihat Kanji
+              <p class="text-[11px] text-pastel-muted flex items-center gap-1">
+                <i class="fa-solid fa-rotate"></i> Ketuk untuk lihat Kanji
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Controls -->
-        <div class="flex items-center gap-4">
-          <button onclick="prevKotoba()" class="px-5 py-2.5 rounded-xl font-bold btn-3d-pink flex items-center gap-2">
-            <i class="fa-solid fa-arrow-left"></i> SEBELUMNYA
+        <!-- Navigation Buttons -->
+        <div class="flex items-center justify-between w-full gap-2">
+          <button onclick="prevKotoba()" class="flex-1 py-2.5 rounded-xl font-bold text-xs btn-3d-pink flex items-center justify-center gap-1">
+            <i class="fa-solid fa-chevron-left"></i> KIRI
           </button>
-          <span class="text-sm font-semibold text-gray-600 bg-white px-4 py-2 rounded-xl border border-pink-100" id="kotoba-counter">1 / 10</span>
-          <button onclick="nextKotoba()" class="px-5 py-2.5 rounded-xl font-bold btn-3d-pink flex items-center gap-2">
-            SELANJUTNYA <i class="fa-solid fa-arrow-right"></i>
+          <span class="text-xs font-bold text-gray-600 bg-white px-3 py-2 rounded-xl border border-pink-100" id="kotoba-counter">1 / 10</span>
+          <button onclick="nextKotoba()" class="flex-1 py-2.5 rounded-xl font-bold text-xs btn-3d-pink flex items-center justify-center gap-1">
+            KANAN <i class="fa-solid fa-chevron-right"></i>
           </button>
         </div>
       </div>
@@ -258,64 +218,62 @@
 
 
     <!-- TAB 2: KANJI N4 FLASHCARDS -->
-    <section id="tab-flashcard-kanji" class="tab-content hidden space-y-6">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-2xl border border-blue-100 shadow-sm">
-        <div>
-          <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
-            <span class="text-2xl">⛩️</span> Flashcard Kanji N4
-          </h2>
-          <p class="text-sm text-pastel-muted">Pelajari Kanji JLPT N4, Onyomi, Kunyomi, dan Contohnya</p>
+    <section id="tab-flashcard-kanji" class="tab-content hidden space-y-5">
+      <div class="bg-white p-3.5 rounded-2xl border border-blue-100 shadow-sm flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">⛩️</span>
+          <h2 class="text-sm font-bold text-gray-800">Flashcard Kanji N4</h2>
         </div>
-        <button onclick="shuffleKanji()" class="px-4 py-2 rounded-xl text-xs font-bold btn-3d-blue flex items-center gap-2">
-          <i class="fa-solid fa-shuffle"></i> ACAK KANJI
+        <button onclick="shuffleKanji()" class="px-3 py-1.5 rounded-xl text-xs font-bold btn-3d-blue flex items-center gap-1">
+          <i class="fa-solid fa-shuffle"></i> ACAK
         </button>
       </div>
 
-      <!-- Flashcard Display -->
-      <div class="flex flex-col items-center justify-center space-y-6">
-        <div class="w-full max-w-md h-80 perspective-1000 cursor-pointer" onclick="flipCard('kanji-card')">
-          <div id="kanji-card" class="relative w-full h-full transform-style-3d duration-500 rounded-3xl shadow-lg border border-blue-100">
+      <!-- Card Display -->
+      <div class="flex flex-col items-center space-y-5">
+        <div class="w-full h-80 perspective-1000 cursor-pointer" onclick="flipCard('kanji-card')">
+          <div id="kanji-card" class="relative w-full h-full transform-style-3d rounded-3xl shadow-md border border-blue-100">
             <!-- Front -->
-            <div class="absolute inset-0 backface-hidden bg-gradient-to-br from-white to-blue-50 rounded-3xl p-6 flex flex-col justify-between items-center text-center">
-              <span class="text-xs font-semibold px-3 py-1 bg-pastel-blue text-blue-900 rounded-full" id="kanji-strokes">8 Coretan</span>
+            <div class="absolute inset-0 backface-hidden bg-gradient-to-br from-white to-blue-50 rounded-3xl p-5 flex flex-col justify-between items-center text-center">
+              <span class="text-[11px] font-bold px-3 py-1 bg-pastel-blue text-blue-900 rounded-full" id="kanji-strokes">13 Coretan</span>
               <div class="my-auto">
                 <h3 class="text-7xl font-bold text-gray-800 font-jp" id="kanji-char">新</h3>
               </div>
-              <p class="text-xs text-pastel-muted flex items-center gap-1">
-                <i class="fa-solid fa-rotate"></i> Klik untuk detail bacaan & arti
+              <p class="text-[11px] text-pastel-muted flex items-center gap-1">
+                <i class="fa-solid fa-rotate"></i> Ketuk untuk detail & arti
               </p>
             </div>
             <!-- Back -->
-            <div class="absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br from-pastel-blue/20 to-white rounded-3xl p-6 flex flex-col justify-between items-center text-center border-2 border-pastel-blue">
-              <div class="w-full text-left space-y-3">
-                <div class="text-center border-b border-blue-100 pb-2">
-                  <h4 class="text-xl font-bold text-blue-900" id="kanji-arti">Baru (New)</h4>
+            <div class="absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br from-pastel-blue/20 to-white rounded-3xl p-5 flex flex-col justify-between items-center text-center border-2 border-pastel-blue">
+              <div class="w-full text-left space-y-2.5">
+                <div class="text-center border-b border-blue-100 pb-1.5">
+                  <h4 class="text-lg font-bold text-blue-900" id="kanji-arti">Baru (New)</h4>
                 </div>
                 <div class="text-xs space-y-1">
-                  <p><span class="font-bold text-blue-800">Onyomi:</span> <span id="kanji-onyomi" class="font-jp">シン (shin)</span></p>
-                  <p><span class="font-bold text-blue-800">Kunyomi:</span> <span id="kanji-kunyomi" class="font-jp">あたら.しい (atara-shii)</span></p>
+                  <p><span class="font-bold text-blue-800">Onyomi:</span> <span id="kanji-onyomi" class="font-jp">シン</span></p>
+                  <p><span class="font-bold text-blue-800">Kunyomi:</span> <span id="kanji-kunyomi" class="font-jp">あたら.しい</span></p>
                 </div>
-                <div class="bg-white p-3 rounded-xl border border-blue-100 text-xs">
-                  <p class="font-bold text-gray-700 mb-1">Contoh Penggunaan:</p>
-                  <p class="font-jp font-semibold text-blue-900" id="kanji-contoh-jp">新聞 (しんぶん)</p>
-                  <p class="text-gray-600" id="kanji-contoh-arti">Koran / Surat Kabar</p>
+                <div class="bg-white p-2.5 rounded-xl border border-blue-100 text-xs">
+                  <p class="font-bold text-gray-700 mb-0.5">Contoh:</p>
+                  <p class="font-jp font-bold text-blue-900" id="kanji-contoh-jp">新聞 (しんぶん)</p>
+                  <p class="text-gray-600 text-[11px]" id="kanji-contoh-arti">Surat Kabar</p>
                 </div>
               </div>
-              <p class="text-xs text-pastel-muted flex items-center gap-1 pt-2">
-                <i class="fa-solid fa-rotate"></i> Klik untuk kembali
+              <p class="text-[11px] text-pastel-muted flex items-center gap-1 pt-1">
+                <i class="fa-solid fa-rotate"></i> Ketuk untuk kembali
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Controls -->
-        <div class="flex items-center gap-4">
-          <button onclick="prevKanji()" class="px-5 py-2.5 rounded-xl font-bold btn-3d-blue flex items-center gap-2">
-            <i class="fa-solid fa-arrow-left"></i> SEBELUMNYA
+        <!-- Navigation Buttons -->
+        <div class="flex items-center justify-between w-full gap-2">
+          <button onclick="prevKanji()" class="flex-1 py-2.5 rounded-xl font-bold text-xs btn-3d-blue flex items-center justify-center gap-1">
+            <i class="fa-solid fa-chevron-left"></i> KIRI
           </button>
-          <span class="text-sm font-semibold text-gray-600 bg-white px-4 py-2 rounded-xl border border-blue-100" id="kanji-counter">1 / 10</span>
-          <button onclick="nextKanji()" class="px-5 py-2.5 rounded-xl font-bold btn-3d-blue flex items-center gap-2">
-            SELANJUTNYA <i class="fa-solid fa-arrow-right"></i>
+          <span class="text-xs font-bold text-gray-600 bg-white px-3 py-2 rounded-xl border border-blue-100" id="kanji-counter">1 / 10</span>
+          <button onclick="nextKanji()" class="flex-1 py-2.5 rounded-xl font-bold text-xs btn-3d-blue flex items-center justify-center gap-1">
+            KANAN <i class="fa-solid fa-chevron-right"></i>
           </button>
         </div>
       </div>
@@ -323,114 +281,112 @@
 
 
     <!-- TAB 3: BUNPOU MINNA NO NIHONGO 2 -->
-    <section id="tab-bunpou" class="tab-content hidden space-y-6">
-      <div class="bg-white p-4 rounded-2xl border border-green-100 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div>
-          <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
-            <span class="text-2xl">📝</span> Rangkuman Tata Bahasa (Bunpou)
-          </h2>
-          <p class="text-sm text-pastel-muted">Minna no Nihongo II (Bab 26 - 50)</p>
+    <section id="tab-bunpou" class="tab-content hidden space-y-4">
+      <div class="bg-white p-3.5 rounded-2xl border border-green-100 shadow-sm space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">📝</span>
+          <h2 class="text-sm font-bold text-gray-800">Tata Bahasa (Bunpou)</h2>
         </div>
-        <div class="w-full sm:w-auto">
-          <input type="text" id="bunpou-search" oninput="filterBunpou()" placeholder="Cari tata bahasa / bab..." class="w-full sm:w-64 bg-pastel-bg border border-green-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-pastel-mint-dark">
-        </div>
+        <input type="text" id="bunpou-search" oninput="filterBunpou()" placeholder="Cari tata bahasa atau bab..." class="w-full bg-pastel-bg border border-green-200 rounded-xl px-3 py-2 text-xs outline-none">
       </div>
 
-      <!-- Bunpou Accordion List -->
-      <div id="bunpou-list" class="space-y-4">
-        <!-- Dynamic Bunpou Cards -->
+      <!-- Bunpou List -->
+      <div id="bunpou-list" class="space-y-3">
+        <!-- Dynamic Content -->
       </div>
     </section>
 
 
     <!-- TAB 4: KUIS INTERAKTIF -->
-    <section id="tab-kuis" class="tab-content hidden space-y-6">
-      <div class="bg-white p-6 rounded-3xl border border-purple-100 shadow-sm text-center max-w-2xl mx-auto" id="quiz-start-card">
-        <div class="w-16 h-16 bg-pastel-lavender rounded-3xl flex items-center justify-center text-2xl text-purple-900 mx-auto mb-4 shadow-sm">
+    <section id="tab-kuis" class="tab-content hidden space-y-5">
+      <!-- Start Screen -->
+      <div class="bg-white p-5 rounded-3xl border border-purple-100 shadow-sm text-center" id="quiz-start-card">
+        <div class="w-14 h-14 bg-pastel-lavender rounded-2xl flex items-center justify-center text-2xl text-purple-900 mx-auto mb-3">
           🎯
         </div>
-        <h2 class="text-2xl font-bold text-gray-800 mb-2">Uji Pemahaman Bahasa Jepang</h2>
-        <p class="text-sm text-pastel-muted mb-6">Pilih jenis kuis yang ingin Anda ikuti untuk menguji hafalan Kotoba, Kanji N4, dan Bunpou Anda.</p>
+        <h2 class="text-lg font-bold text-gray-800 mb-1">Uji Pemahaman</h2>
+        <p class="text-xs text-pastel-muted mb-5">Pilih kategori kuis yang ingin dipelajari:</p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-          <button onclick="startQuiz('kotoba')" class="p-4 rounded-2xl bg-pink-50 border border-pink-200 hover:bg-pink-100 transition text-left">
-            <i class="fa-solid fa-book text-pink-500 text-xl mb-2"></i>
-            <h4 class="font-bold text-gray-800 text-sm">Kuis Kotoba</h4>
-            <p class="text-xs text-gray-500">Bab 26-50</p>
+        <div class="grid grid-cols-1 gap-2.5 mb-4">
+          <button onclick="startQuiz('kotoba')" class="p-3 rounded-2xl bg-pink-50 border border-pink-200 text-left flex items-center gap-3">
+            <i class="fa-solid fa-book text-pink-500 text-lg"></i>
+            <div>
+              <h4 class="font-bold text-gray-800 text-xs">Kuis Kotoba</h4>
+              <p class="text-[10px] text-gray-500">Kosakata Bab 26-50</p>
+            </div>
           </button>
-          <button onclick="startQuiz('kanji')" class="p-4 rounded-2xl bg-blue-50 border border-blue-200 hover:bg-blue-100 transition text-left">
-            <i class="fa-solid fa-pen-nib text-blue-500 text-xl mb-2"></i>
-            <h4 class="font-bold text-gray-800 text-sm">Kuis Kanji N4</h4>
-            <p class="text-xs text-gray-500">Bacaan & Arti</p>
+          <button onclick="startQuiz('kanji')" class="p-3 rounded-2xl bg-blue-50 border border-blue-200 text-left flex items-center gap-3">
+            <i class="fa-solid fa-pen-nib text-blue-500 text-lg"></i>
+            <div>
+              <h4 class="font-bold text-gray-800 text-xs">Kuis Kanji N4</h4>
+              <p class="text-[10px] text-gray-500">Bacaan Onyomi/Kunyomi & Arti</p>
+            </div>
           </button>
-          <button onclick="startQuiz('bunpou')" class="p-4 rounded-2xl bg-green-50 border border-green-200 hover:bg-green-100 transition text-left">
-            <i class="fa-solid fa-layer-group text-green-500 text-xl mb-2"></i>
-            <h4 class="font-bold text-gray-800 text-sm">Kuis Bunpou</h4>
-            <p class="text-xs text-gray-500">Pola Kalimat</p>
+          <button onclick="startQuiz('bunpou')" class="p-3 rounded-2xl bg-green-50 border border-green-200 text-left flex items-center gap-3">
+            <i class="fa-solid fa-layer-group text-green-500 text-lg"></i>
+            <div>
+              <h4 class="font-bold text-gray-800 text-xs">Kuis Bunpou</h4>
+              <p class="text-[10px] text-gray-500">Pola Kalimat MNN II</p>
+            </div>
           </button>
         </div>
 
-        <button onclick="startQuiz('mixed')" class="w-full py-3 rounded-2xl font-bold text-sm btn-3d-lavender flex items-center justify-center gap-2">
-          <i class="fa-solid fa-bolt"></i> MULAI KUIS CAMPURAN (ALL IN)
+        <button onclick="startQuiz('mixed')" class="w-full py-3 rounded-2xl font-bold text-xs btn-3d-lavender flex items-center justify-center gap-2">
+          <i class="fa-solid fa-bolt"></i> KUIS CAMPURAN (SEMUA)
         </button>
       </div>
 
-      <!-- Active Quiz Interface -->
-      <div id="quiz-active-card" class="hidden bg-white p-6 rounded-3xl border border-purple-100 shadow-md max-w-2xl mx-auto space-y-6">
-        <!-- Progress Bar -->
+      <!-- Active Quiz -->
+      <div id="quiz-active-card" class="hidden bg-white p-5 rounded-3xl border border-purple-100 shadow-sm space-y-4">
         <div class="flex items-center justify-between text-xs font-bold text-gray-500">
-          <span id="quiz-category-tag" class="px-3 py-1 bg-pastel-lavender text-purple-900 rounded-full">Kotoba</span>
-          <span id="quiz-progress-text">Soal 1 dari 5</span>
+          <span id="quiz-category-tag" class="px-2.5 py-0.5 bg-pastel-lavender text-purple-900 rounded-full text-[10px]">Kotoba</span>
+          <span id="quiz-progress-text" class="text-[11px]">Soal 1 dari 5</span>
         </div>
-        <div class="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
+        
+        <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
           <div id="quiz-progress-bar" class="bg-pastel-lavender-dark h-full transition-all duration-300" style="width: 20%"></div>
         </div>
 
-        <!-- Question -->
-        <div class="text-center py-4">
-          <h3 class="text-xs font-semibold text-pastel-muted uppercase tracking-wider mb-2">Pertanyaan:</h3>
-          <p id="quiz-question" class="text-2xl font-bold text-gray-800 font-jp">〜んですか / 〜んです</p>
+        <div class="text-center py-2">
+          <p id="quiz-question" class="text-base font-bold text-gray-800 font-jp">Soal Pertanyaan</p>
         </div>
 
-        <!-- Options Container -->
-        <div id="quiz-options" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <!-- Options injected dynamically -->
+        <div id="quiz-options" class="grid grid-cols-1 gap-2">
+          <!-- Dynamic Options -->
         </div>
 
-        <!-- Hint / Rationale Box -->
-        <div id="quiz-feedback" class="hidden p-4 rounded-2xl text-xs font-medium border"></div>
+        <div id="quiz-feedback" class="hidden p-3 rounded-2xl text-xs font-medium border"></div>
 
-        <!-- Next Button -->
-        <div class="flex justify-end">
-          <button id="quiz-next-btn" onclick="nextQuestion()" disabled class="px-6 py-2.5 rounded-xl font-bold text-sm btn-3d-lavender opacity-50 cursor-not-allowed">
+        <div class="flex justify-end pt-2">
+          <button id="quiz-next-btn" onclick="nextQuestion()" disabled class="w-full py-2.5 rounded-xl font-bold text-xs btn-3d-lavender opacity-50 cursor-not-allowed">
             SOAL SELANJUTNYA <i class="fa-solid fa-chevron-right ml-1"></i>
           </button>
         </div>
       </div>
 
-      <!-- Quiz Result Screen -->
-      <div id="quiz-result-card" class="hidden bg-white p-8 rounded-3xl border border-purple-100 shadow-lg text-center max-w-md mx-auto space-y-6">
-        <div class="w-20 h-20 bg-pastel-yellow rounded-full flex items-center justify-center text-4xl mx-auto shadow-sm">
+      <!-- Quiz Result -->
+      <div id="quiz-result-card" class="hidden bg-white p-6 rounded-3xl border border-purple-100 shadow-sm text-center space-y-5">
+        <div class="w-16 h-16 bg-pastel-yellow rounded-full flex items-center justify-center text-3xl mx-auto">
           🏆
         </div>
         <div>
-          <h3 class="text-2xl font-bold text-gray-800">Kuis Selesai!</h3>
-          <p class="text-sm text-pastel-muted mt-1">Berikut adalah hasil pencapaian Anda:</p>
+          <h3 class="text-xl font-bold text-gray-800">Kuis Selesai!</h3>
+          <p class="text-xs text-pastel-muted mt-0.5">Hasil latihan kamu:</p>
         </div>
 
         <div class="bg-pastel-bg p-4 rounded-2xl flex justify-around items-center border border-purple-50">
           <div>
-            <p class="text-xs text-gray-500 font-medium">Skor Akhir</p>
-            <p id="result-score" class="text-3xl font-bold text-purple-700">80%</p>
+            <p class="text-[10px] text-gray-500 font-bold">Skor Akhir</p>
+            <p id="result-score" class="text-2xl font-bold text-purple-700">80%</p>
           </div>
           <div class="w-px h-8 bg-gray-200"></div>
           <div>
-            <p class="text-xs text-gray-500 font-medium">Benar / Total</p>
-            <p id="result-detail" class="text-3xl font-bold text-green-600">4 / 5</p>
+            <p class="text-[10px] text-gray-500 font-bold">Benar / Total</p>
+            <p id="result-detail" class="text-2xl font-bold text-green-600">4 / 5</p>
           </div>
         </div>
 
-        <button onclick="resetQuiz()" class="w-full py-3 rounded-2xl font-bold text-sm btn-3d-lavender">
+        <button onclick="resetQuiz()" class="w-full py-3 rounded-2xl font-bold text-xs btn-3d-lavender">
           <i class="fa-solid fa-rotate-right mr-1"></i> COBA KUIS LAGI
         </button>
       </div>
@@ -439,19 +395,19 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-purple-100 py-4 text-center text-xs text-pastel-muted mt-12">
-    <p>Nihongo Master &copy; 2026 - Minna no Nihongo II & JLPT N4 Interactive App</p>
+  <footer class="bg-white border-t border-purple-100 py-3 text-center text-[10px] text-pastel-muted mt-6">
+    <p>Nihongo Master &copy; 2026 - MNN II & JLPT N4 Mobile App</p>
   </footer>
 
 
-  <!-- JavaScript Data & Logic -->
+  <!-- JavaScript Logic -->
   <script>
-    // --- DATA KOTOBA (MNN BAB 26-50 SAMPLE) ---
+    // --- DATA KOTOBA ---
     const kotobaData = [
-      { bab: 26, kanji: "診ます", kana: "みます", arti: "memeriksa, memeriksa kesehatan", contoh: "医者に診てもらいます。" },
-      { bab: 26, kanji: "探します", kana: "さがします", arti: "mencari (barang yang hilang/dibutuhkan)", contoh: "鍵を探しています。" },
-      { bab: 27, kanji: "飼います", kana: "かいます", arti: "memelihara (hewan)", contoh: "犬を飼っています。" },
-      { bab: 27, kanji: "建てます", kana: "たてます", arti: "membangun, mendirikan", contoh: "新しい家を建てます。" },
+      { bab: 26, kanji: "診ます", kana: "みます", arti: "memeriksa kesehatan", contoh: "医者に診てもらいます。" },
+      { bab: 26, kanji: "探します", kana: "さがします", arti: "mencari barang hilang", contoh: "鍵を探しています。" },
+      { bab: 27, kanji: "飼います", kana: "かいます", arti: "memelihara hewan", contoh: "犬を飼っています。" },
+      { bab: 27, kanji: "建てます", kana: "たてます", arti: "membangun rumah/gedung", contoh: "新しい家を建てます。" },
       { bab: 28, kanji: "売れます", kana: "うれます", arti: "terjual, laku", contoh: "パンがよく売れます。" },
       { bab: 28, kanji: "真面目", kana: "まじめ[な]", arti: "rajin, sungguh-sungguh", contoh: "真面目な学生です。" },
       { bab: 29, kanji: "開きます", kana: "あきます", arti: "terbuka (pintu/jendela)", contoh: "ドアが開きます。" },
@@ -468,88 +424,28 @@
       { char: "短", strokes: "12 Coretan", arti: "Pendek", onyomi: "タン", kunyomi: "みじか.い", exJp: "短時間 (たんじかん)", exArti: "Waktu Singkat" },
       { char: "高", strokes: "10 Coretan", arti: "Tinggi / Mahal", onyomi: "コウ", kunyomi: "たか.い", exJp: "高校生 (こうこうせい)", exArti: "Siswa SMA" },
       { char: "安", strokes: "6 Coretan", arti: "Murah / Aman", onyomi: "アン", kunyomi: "やす.い", exJp: "安心 (あんしん)", exArti: "Lega / Tenang" },
-      { char: "広", strokes: "5 Coretan", arti: "Luas", onyomi: "コウ", kunyomi: "ひろ.い", exJp: "広場 (ひろば)", exArti: "Lapangan / Alun-alun" },
-      { char: "多", strokes: "6 Coretan", arti: "Banyak", onyomi: "タ", kunyomi: "おお.い", exJp: "多数 (たすう)", exArti: "Jumlah Banyak" },
+      { char: "広", strokes: "5 Coretan", arti: "Luas", onyomi: "コウ", kunyomi: "ひろ.い", exJp: "広場 (ひろば)", exArti: "Lapangan" },
+      { char: "多", strokes: "6 Coretan", arti: "Banyak", onyomi: "タ", kunyomi: "おお.い", exJp: "多数 (たすう)", exArti: "Banyak Jumlah" },
       { char: "少", strokes: "4 Coretan", arti: "Sedikit", onyomi: "ショウ", kunyomi: "すく.ない / すこ.し", exJp: "少年 (しょうねん)", exArti: "Anak Laki-Laki" },
       { char: "早", strokes: "6 Coretan", arti: "Cepat / Awal", onyomi: "ソウ", kunyomi: "はや.い", exJp: "早朝 (そうちょう)", exArti: "Pagi-Pagi Sekali" }
     ];
 
-    // --- DATA BUNPOU MINNA NO NIHONGO 2 ---
+    // --- DATA BUNPOU ---
     const bunpouData = [
-      {
-        bab: 26,
-        pola: "〜んですか / 〜んです",
-        penjelasan: "Digunakan untuk meminta atau memberikan penjelasan alasan/latar belakang dari suatu keadaan.",
-        contohJp: "どうして遅れたんですか。バスが来なかったんです。",
-        contohArti: "Mengapa kamu terlambat? Karena busnya tidak datang."
-      },
-      {
-        bab: 27,
-        pola: "Kata Kerja Form Potensial (可能形)",
-        penjelasan: "Menyatakan kemampuan atau kemungkinan untuk melakukan sesuatu (Bisa / Dapat).",
-        contohJp: "日本語の新聞が読めます。",
-        contohArti: "Saya bisa membaca surat kabar bahasa Jepang."
-      },
-      {
-        bab: 28,
-        pola: "〜ながら",
-        penjelasan: "Menyatakan dua kegiatan yang dilakukan secara bersamaan oleh subjek yang sama.",
-        contohJp: "音楽を聴きながら勉強します。",
-        contohArti: "Saya belajar sambil mendengarkan musik."
-      },
-      {
-        bab: 29,
-        pola: "Kata Kerja 自動詞 (Intransitif) + ています",
-        penjelasan: "Menyatakan kondisi atau keadaan yang merupakan akibat dari suatu kejadian sebelumnya.",
-        contohJp: "ドアが開いています。",
-        contohArti: "Pintunya sedang terbuka."
-      },
-      {
-        bab: 30,
-        pola: "Kata Kerja 他動詞 (Transitif) + てあります",
-        penjelasan: "Menyatakan keberadaan suatu benda dalam keadaan sengaja disiapkan/ditempatkan untuk tujuan tertentu.",
-        contohJp: "壁にカレンダーが貼ってあります。",
-        contohArti: "Di dinding tertempel kalender (sengaja dipasang)."
-      }
+      { bab: 26, pola: "〜んですか / 〜んです", penjelasan: "Digunakan untuk meminta/memberikan penjelasan latar belakang keadaan.", contohJp: "どうして遅れたんですか。バスが来なかったんです。", contohArti: "Mengapa kamu terlambat? Karena busnya tidak datang." },
+      { bab: 27, pola: "Kata Kerja Form Potensial (可能形)", penjelasan: "Menyatakan kemampuan/kemungkinan (Bisa/Dapat).", contohJp: "日本語の新聞が読めます。", contohArti: "Saya bisa membaca surat kabar bahasa Jepang." },
+      { bab: 28, pola: "〜ながら", penjelasan: "Menyatakan dua kegiatan yang dilakukan bersamaan (sambil).", contohJp: "音楽を聴きながら勉強します。", contohArti: "Saya belajar sambil mendengarkan musik." },
+      { bab: 29, pola: "Kata Kerja 自動詞 + ています", penjelasan: "Menyatakan kondisi/keadaan hasil dari kejadian sebelumnya.", contohJp: "ドアが開いています。", contohArti: "Pintunya sedang terbuka." },
+      { bab: 30, pola: "Kata Kerja 他動詞 + てあります", penjelasan: "Menyatakan keberadaan benda yang sengaja disiapkan.", contohJp: "壁にカレンダーが貼ってあります。", contohArti: "Di dinding tertempel kalender." }
     ];
 
-    // --- DATA KUIS SAMPLE ---
+    // --- DATA KUIS ---
     const quizQuestions = [
-      {
-        category: "Kotoba",
-        question: "Apa arti dari kosakata '診ます (みます)'?",
-        options: ["Memeriksa kesehatan", "Mencari barang", "Membangun rumah", "Memelihara hewan"],
-        answer: 0,
-        explanation: "診ます (みます) berarti memeriksa kesehatan atau berobat ke dokter."
-      },
-      {
-        category: "Kanji N4",
-        question: "Manakah bacaan Onyomi dari Kanji '新'?",
-        options: ["コ", "シン", "タン", "アン"],
-        answer: 1,
-        explanation: "Kanji 新 (Baru) memiliki bacaan Onyomi シン (shin) seperti pada 新聞 (しんぶん)."
-      },
-      {
-        category: "Bunpou",
-        question: "Pola kalimat mana yang digunakan untuk menyatakan 2 kegiatan bersamaan (sambil)?",
-        options: ["〜てあります", "〜んですか", "〜ながら", "〜てもいいです"],
-        answer: 2,
-        explanation: "Pola 〜ながら (Nagara) digunakan untuk menyatakan dua aksi bersamaan."
-      },
-      {
-        category: "Kotoba",
-        question: "Kosakata '探します (さがします)' memiliki arti...",
-        options: ["Menjual", "Mencari", "Membeli", "Merusak"],
-        answer: 1,
-        explanation: "探します berarti mencari barang yang hilang atau dibutuhkan."
-      },
-      {
-        category: "Kanji N4",
-        question: "Kanji '古' memiliki arti...",
-        options: ["Baru", "Tinggi", "Lama / Kuno", "Sedikit"],
-        answer: 2,
-        explanation: "Kanji 古 (Furu-i) berarti lama, tua, atau kuno."
-      }
+      { category: "Kotoba", question: "Apa arti kosakata '診ます (みます)'?", options: ["Memeriksa kesehatan", "Mencari barang", "Membangun rumah", "Memelihara hewan"], answer: 0, explanation: "診ます (みます) berarti memeriksa kesehatan ke dokter." },
+      { category: "Kanji N4", question: "Onyomi dari Kanji '新' adalah...", options: ["コ", "シン", "タン", "アン"], answer: 1, explanation: "Kanji 新 memiliki bacaan Onyomi シン (shin)." },
+      { category: "Bunpou", question: "Pola kalimat untuk menyatakan 2 kegiatan bersamaan (sambil) adalah...", options: ["〜てあります", "〜んですか", "〜ながら", "〜てもいいです"], answer: 2, explanation: "Pola 〜ながら (Nagara) berarti 'sambil'." },
+      { category: "Kotoba", question: "Arti kosakata '探します (さがします)' adalah...", options: ["Menjual", "Mencari", "Membeli", "Merusak"], answer: 1, explanation: "探します artinya mencari barang yang hilang/dibutuhkan." },
+      { category: "Kanji N4", question: "Kanji '古' memiliki arti...", options: ["Baru", "Tinggi", "Lama / Kuno", "Sedikit"], answer: 2, explanation: "Kanji 古 (Furu-i) artinya lama atau kuno." }
     ];
 
     // --- STATE MANAGEMENT ---
@@ -572,16 +468,15 @@
     // --- NAVIGATION LOGIC ---
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.getElementById(`tab-`).classList.remove('hidden');
+      document.getElementById(`tab-${tabId}`).classList.remove('hidden');
 
-      // Update Active Navigation Button Styling
       const navs = ['kotoba', 'kanji', 'bunpou', 'kuis'];
       navs.forEach(nav => {
-        const btn = document.getElementById(`nav-`);
-        if (`flashcard-` === tabId || nav === tabId) {
-          btn.classList.add('ring-2', 'ring-offset-2', 'ring-purple-300');
+        const btn = document.getElementById(`nav-${nav}`);
+        if (`flashcard-${nav}` === tabId || nav === tabId) {
+          btn.classList.add('ring-2', 'ring-purple-300');
         } else {
-          btn.classList.remove('ring-2', 'ring-offset-2', 'ring-purple-300');
+          btn.classList.remove('ring-2', 'ring-purple-300');
         }
       });
     }
@@ -595,9 +490,9 @@
     // --- KOTOBA LOGIC ---
     function initKotobaTab() {
       const select = document.getElementById('kotoba-bab-select');
-      select.innerHTML = `<option value="all">Semua Bab (26-50)</option>`;
+      select.innerHTML = `<option value="all">Semua Bab</option>`;
       for (let i = 26; i <= 50; i++) {
-        select.innerHTML += `<option value="">Bab </option>`;
+        select.innerHTML += `<option value="${i}">Bab ${i}</option>`;
       }
       renderKotobaCard();
     }
@@ -615,9 +510,9 @@
 
     function renderKotobaCard() {
       if (filteredKotoba.length === 0) {
-        document.getElementById('kotoba-kanji').innerText = "Kosakata Kosong";
+        document.getElementById('kotoba-kanji').innerText = "Kosong";
         document.getElementById('kotoba-kana').innerText = "";
-        document.getElementById('kotoba-arti').innerText = "Belum ada data untuk bab ini";
+        document.getElementById('kotoba-arti').innerText = "Belum ada data";
         document.getElementById('kotoba-tag').innerText = "N/A";
         document.getElementById('kotoba-counter').innerText = "0 / 0";
         return;
@@ -627,12 +522,12 @@
       document.getElementById('kotoba-card').classList.remove('rotate-y-180');
       
       setTimeout(() => {
-        document.getElementById('kotoba-tag').innerText = `Bab `;
+        document.getElementById('kotoba-tag').innerText = `Bab ${item.bab}`;
         document.getElementById('kotoba-kanji').innerText = item.kanji;
         document.getElementById('kotoba-kana').innerText = item.kana;
         document.getElementById('kotoba-arti').innerText = item.arti;
         document.getElementById('kotoba-contoh').innerText = item.contoh;
-        document.getElementById('kotoba-counter').innerText = ` / `;
+        document.getElementById('kotoba-counter').innerText = `${currentKotobaIdx + 1} / ${filteredKotoba.length}`;
       }, 150);
     }
 
@@ -665,7 +560,7 @@
         document.getElementById('kanji-kunyomi').innerText = item.kunyomi;
         document.getElementById('kanji-contoh-jp').innerText = item.exJp;
         document.getElementById('kanji-contoh-arti').innerText = item.exArti;
-        document.getElementById('kanji-counter').innerText = ` / `;
+        document.getElementById('kanji-counter').innerText = `${currentKanjiIdx + 1} / ${kanjiData.length}`;
       }, 150);
     }
 
@@ -694,24 +589,24 @@
       container.innerHTML = '';
 
       if (data.length === 0) {
-        container.innerHTML = `<div class="p-8 text-center text-pastel-muted">Tata bahasa tidak ditemukan.</div>`;
+        container.innerHTML = `<div class="p-6 text-center text-xs text-pastel-muted">Tata bahasa tidak ditemukan.</div>`;
         return;
       }
 
       data.forEach(item => {
         const card = document.createElement('div');
-        card.className = "bg-white p-5 rounded-2xl border border-green-100 shadow-sm space-y-3";
+        card.className = "bg-white p-4 rounded-2xl border border-green-100 shadow-sm space-y-2";
         card.innerHTML = `
-          <div class="flex items-center justify-between border-b border-green-50 pb-2">
-            <span class="px-3 py-1 bg-pastel-mint text-green-900 text-xs font-bold rounded-full">Bab </span>
-            <span class="text-xs text-pastel-muted">Minna no Nihongo II</span>
+          <div class="flex items-center justify-between border-b border-green-50 pb-1.5">
+            <span class="px-2.5 py-0.5 bg-pastel-mint text-green-900 text-[10px] font-bold rounded-full">Bab ${item.bab}</span>
+            <span class="text-[10px] text-pastel-muted">Minna II</span>
           </div>
-          <h3 class="text-lg font-bold text-gray-800 font-jp"></h3>
-          <p class="text-sm text-gray-600"></p>
-          <div class="bg-pastel-bg p-3 rounded-xl border border-green-100 text-xs space-y-1">
-            <p class="font-bold text-green-900">Contoh Kalimat:</p>
-            <p class="font-jp text-sm text-gray-800"></p>
-            <p class="text-gray-500 italic"></p>
+          <h3 class="text-base font-bold text-gray-800 font-jp">${item.pola}</h3>
+          <p class="text-xs text-gray-600">${item.penjelasan}</p>
+          <div class="bg-pastel-bg p-2.5 rounded-xl border border-green-100 text-xs space-y-0.5">
+            <p class="font-bold text-green-900 text-[11px]">Contoh Kalimat:</p>
+            <p class="font-jp text-xs text-gray-800">${item.contohJp}</p>
+            <p class="text-gray-500 italic text-[11px]">${item.contohArti}</p>
           </div>
         `;
         container.appendChild(card);
@@ -723,7 +618,7 @@
       const filtered = bunpouData.filter(item => 
         item.pola.toLowerCase().includes(query) ||
         item.penjelasan.toLowerCase().includes(query) ||
-        `bab `.includes(query)
+        `bab ${item.bab}`.includes(query)
       );
       renderBunpou(filtered);
     }
@@ -740,9 +635,7 @@
         selectedQuizList = [...quizQuestions];
       }
 
-      // Shuffle Questions
       selectedQuizList.sort(() => Math.random() - 0.5);
-
       currentQuizIdx = 0;
       quizScore = 0;
       
@@ -758,11 +651,10 @@
       const q = selectedQuizList[currentQuizIdx];
 
       document.getElementById('quiz-category-tag').innerText = q.category;
-      document.getElementById('quiz-progress-text').innerText = `Soal  dari `;
+      document.getElementById('quiz-progress-text').innerText = `Soal ${currentQuizIdx + 1} dari ${selectedQuizList.length}`;
       document.getElementById('quiz-progress-bar').style.width = `${((currentQuizIdx + 1) / selectedQuizList.length) * 100}%`;
       document.getElementById('quiz-question').innerText = q.question;
 
-      // Hide Feedback Box & Disable Next Button
       const feedback = document.getElementById('quiz-feedback');
       feedback.classList.add('hidden');
       
@@ -770,14 +662,13 @@
       nextBtn.disabled = true;
       nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
 
-      // Render Options
       const optionsContainer = document.getElementById('quiz-options');
       optionsContainer.innerHTML = '';
 
       q.options.forEach((opt, idx) => {
         const btn = document.createElement('button');
-        btn.className = `p-4 rounded-2xl text-left font-semibold text-sm border-2 border-purple-100 bg-white hover:bg-purple-50 transition flex items-center justify-between font-jp`;
-        btn.innerHTML = `<span></span> <i class="fa-regular fa-circle text-gray-300"></i>`;
+        btn.className = `p-3 rounded-2xl text-left font-semibold text-xs border border-purple-100 bg-white flex items-center justify-between font-jp`;
+        btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-gray-300"></i>`;
         btn.onclick = () => checkQuizAnswer(idx, btn);
         optionsContainer.appendChild(btn);
       });
@@ -792,24 +683,21 @@
 
       if (selectedIdx === q.answer) {
         quizScore++;
-        btnElement.className = "p-4 rounded-2xl text-left font-semibold text-sm border-2 border-green-400 bg-green-50 text-green-900 flex items-center justify-between font-jp";
-        btnElement.querySelector('i').className = "fa-solid fa-circle-check text-green-500 text-lg";
+        btnElement.className = "p-3 rounded-2xl text-left font-semibold text-xs border-2 border-green-400 bg-green-50 text-green-900 flex items-center justify-between font-jp";
+        btnElement.querySelector('i').className = "fa-solid fa-circle-check text-green-500 text-base";
       } else {
-        btnElement.className = "p-4 rounded-2xl text-left font-semibold text-sm border-2 border-red-300 bg-red-50 text-red-900 flex items-center justify-between font-jp";
-        btnElement.querySelector('i').className = "fa-solid fa-circle-xmark text-red-400 text-lg";
+        btnElement.className = "p-3 rounded-2xl text-left font-semibold text-xs border-2 border-red-300 bg-red-50 text-red-900 flex items-center justify-between font-jp";
+        btnElement.querySelector('i').className = "fa-solid fa-circle-xmark text-red-400 text-base";
 
-        // Highlight correct answer
-        optionsButtons[q.answer].className = "p-4 rounded-2xl text-left font-semibold text-sm border-2 border-green-400 bg-green-50 text-green-900 flex items-center justify-between font-jp";
-        optionsButtons[q.answer].querySelector('i').className = "fa-solid fa-circle-check text-green-500 text-lg";
+        optionsButtons[q.answer].className = "p-3 rounded-2xl text-left font-semibold text-xs border-2 border-green-400 bg-green-50 text-green-900 flex items-center justify-between font-jp";
+        optionsButtons[q.answer].querySelector('i').className = "fa-solid fa-circle-check text-green-500 text-base";
       }
 
-      // Show Rationale Feedback
       const feedback = document.getElementById('quiz-feedback');
-      feedback.className = `p-4 rounded-2xl text-xs font-medium border  'bg-red-50 border-red-200 text-red-900'`;
-      feedback.innerHTML = `<strong>Penjelasan:</strong> `;
+      feedback.className = `p-3 rounded-2xl text-[11px] font-medium border ${selectedIdx === q.answer ? 'bg-green-50 border-green-200 text-green-900' : 'bg-red-50 border-red-200 text-red-900'}`;
+      feedback.innerHTML = `<strong>Pembahasan:</strong> ${q.explanation}`;
       feedback.classList.remove('hidden');
 
-      // Enable Next Button
       const nextBtn = document.getElementById('quiz-next-btn');
       nextBtn.disabled = false;
       nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
@@ -831,8 +719,8 @@
       document.getElementById('quiz-result-card').classList.remove('hidden');
 
       const percentage = Math.round((quizScore / selectedQuizList.length) * 100);
-      document.getElementById('result-score').innerText = `%`;
-      document.getElementById('result-detail').innerText = ` / `;
+      document.getElementById('result-score').innerText = `${percentage}%`;
+      document.getElementById('result-detail').innerText = `${quizScore} / ${selectedQuizList.length}`;
     }
 
     function resetQuiz() {
@@ -842,5 +730,3 @@
   </script>
 </body>
 </html>
-
-
