@@ -3,730 +3,353 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nihongo Master - Minna no Nihongo II & Kanji N4</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            pastel: {
-              pink: '#FFD1DC',
-              'pink-dark': '#F498AD',
-              blue: '#A2D2FF',
-              'blue-dark': '#7BB8F0',
-              lavender: '#C8B6FF',
-              'lavender-dark': '#A287F4',
-              mint: '#BFFCC6',
-              'mint-dark': '#83E891',
-              peach: '#FFCBC1',
-              yellow: '#FFF5BA',
-              bg: '#FAF8FC',
-              card: '#FFFFFF',
-              text: '#4A4A68',
-              muted: '#8C8C9A'
-            }
-          },
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            jp: ['"Noto Sans JP"', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-
+  <title>Nihongo Master - HP Friendly</title>
   <style>
-    body {
-      background-color: #FAF8FC;
-      color: #4A4A68;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
+    /* Reset & Base Styles */
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: #FAF8FC; color: #4A4A68; padding-bottom: 30px; }
 
-    /* 3D Soft Pastel Button Effect */
-    .btn-3d-lavender {
-      background-color: #C8B6FF;
-      color: #3B2863;
-      box-shadow: 0 4px 0 #A287F4;
-      transition: all 0.1s ease;
+    /* Header & Navigation */
+    header { background: #ffffff; padding: 12px 16px; border-bottom: 1px solid #E2D9F3; sticky: top; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+    .brand { font-weight: bold; font-size: 16px; color: #3B2863; margin-bottom: 10px; display: flex; items-center; gap: 8px; }
+    
+    .nav-container { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+    .nav-btn {
+      flex: none; padding: 8px 14px; border-radius: 12px; font-size: 12px; font-weight: bold; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
     }
-    .btn-3d-lavender:active {
-      box-shadow: 0 1px 0 #A287F4;
-      transform: translateY(3px);
-    }
+    .nav-btn:active { transform: scale(0.95); }
+    
+    /* Button Colors (Pastel) */
+    .btn-pink { background: #FFD1DC; color: #5C2230; }
+    .btn-blue { background: #A2D2FF; color: #1E3A5F; }
+    .btn-mint { background: #BFFCC6; color: #1C4D25; }
+    .btn-lavender { background: #C8B6FF; color: #3B2863; }
+    .nav-btn.active { outline: 2px solid #A287F4; }
 
-    .btn-3d-blue {
-      background-color: #A2D2FF;
-      color: #1E3A5F;
-      box-shadow: 0 4px 0 #7BB8F0;
-      transition: all 0.1s ease;
-    }
-    .btn-3d-blue:active {
-      box-shadow: 0 1px 0 #7BB8F0;
-      transform: translateY(3px);
-    }
+    /* Layout Content */
+    main { padding: 16px; max-width: 500px; margin: 0 auto; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
 
-    .btn-3d-pink {
-      background-color: #FFD1DC;
-      color: #5C2230;
-      box-shadow: 0 4px 0 #F498AD;
-      transition: all 0.1s ease;
+    /* Cards */
+    .card { background: #fff; border-radius: 16px; padding: 16px; border: 1px solid #E2D9F3; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    
+    /* Interactive Flashcard */
+    .flashcard {
+      background: #ffffff; border: 2px solid #FFD1DC; border-radius: 20px; height: 220px;
+      display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+      padding: 16px; margin-bottom: 16px; cursor: pointer; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     }
-    .btn-3d-pink:active {
-      box-shadow: 0 1px 0 #F498AD;
-      transform: translateY(3px);
-    }
+    .flashcard .tag { position: absolute; top: 12px; background: #FFD1DC; color: #5C2230; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; }
+    .flashcard .main-text { font-size: 32px; font-weight: bold; margin: 10px 0 4px 0; color: #222; }
+    .flashcard .sub-text { font-size: 16px; color: #F498AD; font-weight: bold; }
+    .flashcard .hint { position: absolute; bottom: 10px; font-size: 10px; color: #8C8C9A; }
 
-    .btn-3d-mint {
-      background-color: #BFFCC6;
-      color: #1C4D25;
-      box-shadow: 0 4px 0 #83E891;
-      transition: all 0.1s ease;
+    /* Controls */
+    .controls { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .action-btn { flex: 1; padding: 12px; border-radius: 12px; border: none; font-weight: bold; font-size: 12px; cursor: pointer; text-align: center; }
+    
+    /* Inputs & Options */
+    select, input { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #CCC; margin-top: 6px; font-size: 13px; outline: none; }
+    .option-btn {
+      width: 100%; text-align: left; padding: 12px; border-radius: 12px; border: 1px solid #E2D9F3;
+      background: #fff; margin-bottom: 8px; font-size: 13px; font-weight: 600; cursor: pointer;
     }
-    .btn-3d-mint:active {
-      box-shadow: 0 1px 0 #83E891;
-      transform: translateY(3px);
-    }
+    .option-btn.correct { background: #BFFCC6; border-color: #83E891; color: #1C4D25; }
+    .option-btn.wrong { background: #FFCBC1; border-color: #F498AD; color: #5C2230; }
 
-    /* Flip Card Styles */
-    .perspective-1000 {
-      perspective: 1000px;
-    }
-    .transform-style-3d {
-      transform-style: preserve-3d;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .backface-hidden {
-      backface-visibility: hidden;
-    }
-    .rotate-y-180 {
-      transform: rotateY(180deg);
-    }
-
-    /* Hide Scrollbar for clean mobile UI */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+    .hidden { display: none !important; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-pastel-lavender">
+<body>
 
-  <!-- Header Mobile Friendly -->
-  <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-purple-100 shadow-sm">
-    <div class="px-4 py-3">
-      <div class="flex items-center justify-between mb-3">
-        <div class="flex items-center gap-2" onclick="switchTab('flashcard-kotoba')">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pastel-pink to-pastel-lavender flex items-center justify-center text-white text-lg font-bold shadow-sm">
-            🌸
-          </div>
-          <div>
-            <h1 class="font-bold text-base text-gray-800 leading-tight">Nihongo Master</h1>
-            <p class="text-[10px] text-pastel-muted">MNN II (Bab 26-50) & Kanji N4</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Navigation Bar Horizonally Scrollable for Mobile -->
-      <nav class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
-        <button id="nav-kotoba" onclick="switchTab('flashcard-kotoba')" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap btn-3d-pink flex items-center gap-1.5">
-          <i class="fa-solid fa-book-bookmark"></i>
-          <span>Kotoba</span>
-        </button>
-        <button id="nav-kanji" onclick="switchTab('flashcard-kanji')" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap btn-3d-blue flex items-center gap-1.5">
-          <i class="fa-solid fa-pen-nib"></i>
-          <span>Kanji N4</span>
-        </button>
-        <button id="nav-bunpou" onclick="switchTab('bunpou')" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap btn-3d-mint flex items-center gap-1.5">
-          <i class="fa-solid fa-layer-group"></i>
-          <span>Bunpou</span>
-        </button>
-        <button id="nav-kuis" onclick="switchTab('kuis')" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap btn-3d-lavender flex items-center gap-1.5">
-          <i class="fa-solid fa-gamepad"></i>
-          <span>Kuis</span>
-        </button>
-      </nav>
+  <header>
+    <div class="brand">🌸 Nihongo Master (Mobile)</div>
+    <div class="nav-container">
+      <button id="nav-kotoba" onclick="switchTab('kotoba')" class="nav-btn btn-pink active">Kotoba</button>
+      <button id="nav-kanji" onclick="switchTab('kanji')" class="nav-btn btn-blue">Kanji N4</button>
+      <button id="nav-bunpou" onclick="switchTab('bunpou')" class="nav-btn btn-mint">Bunpou</button>
+      <button id="nav-kuis" onclick="switchTab('kuis')" class="nav-btn btn-lavender">Kuis</button>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="px-4 py-6 flex-grow max-w-lg mx-auto w-full">
+  <main>
 
-    <!-- TAB 1: KOTOBA FLASHCARDS -->
-    <section id="tab-flashcard-kotoba" class="tab-content space-y-5">
-      <div class="bg-white p-3.5 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <span class="text-xl">📚</span>
-          <h2 class="text-sm font-bold text-gray-800">Flashcard Kotoba</h2>
-        </div>
-        <select id="kotoba-bab-select" onchange="filterKotobaBab()" class="bg-pastel-bg border border-pink-200 text-gray-700 text-xs font-semibold rounded-xl px-2.5 py-1.5 outline-none">
-          <!-- Dynamic Bab Options -->
-        </select>
+    <!-- KOTOBA TAB -->
+    <div id="tab-kotoba" class="tab-content active">
+      <div class="card">
+        <label style="font-size: 12px; font-weight: bold;">Pilih Bab:</label>
+        <select id="kotoba-select" onchange="filterKotoba()"></select>
       </div>
 
-      <!-- Card Display -->
-      <div class="flex flex-col items-center space-y-5">
-        <div class="w-full h-72 perspective-1000 cursor-pointer" onclick="flipCard('kotoba-card')">
-          <div id="kotoba-card" class="relative w-full h-full transform-style-3d rounded-3xl shadow-md border border-pink-100">
-            <!-- Front -->
-            <div class="absolute inset-0 backface-hidden bg-gradient-to-br from-white to-pink-50 rounded-3xl p-5 flex flex-col justify-between items-center text-center">
-              <span class="text-[11px] font-bold px-3 py-1 bg-pastel-pink text-pink-900 rounded-full" id="kotoba-tag">Bab 26</span>
-              <div class="space-y-2 my-auto">
-                <h3 class="text-4xl font-bold text-gray-800 font-jp" id="kotoba-kanji">診ます</h3>
-                <p class="text-lg font-bold text-pink-500 font-jp" id="kotoba-kana">みます</p>
-              </div>
-              <p class="text-[11px] text-pastel-muted flex items-center gap-1">
-                <i class="fa-solid fa-rotate"></i> Ketuk untuk lihat arti
-              </p>
-            </div>
-            <!-- Back -->
-            <div class="absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br from-pastel-pink/20 to-white rounded-3xl p-5 flex flex-col justify-between items-center text-center border-2 border-pastel-pink">
-              <span class="text-[11px] font-bold px-3 py-1 bg-white text-pink-900 rounded-full shadow-sm">Arti</span>
-              <div class="my-auto space-y-2">
-                <p class="text-xl font-bold text-gray-800" id="kotoba-arti">memeriksa kesehatan</p>
-                <p class="text-xs text-gray-500 italic" id="kotoba-contoh">医者に診てもらいます</p>
-              </div>
-              <p class="text-[11px] text-pastel-muted flex items-center gap-1">
-                <i class="fa-solid fa-rotate"></i> Ketuk untuk lihat Kanji
-              </p>
-            </div>
+      <div class="flashcard" id="kotoba-card-box" onclick="toggleKotobaCard()">
+        <span class="tag" id="k-tag">Bab 26</span>
+        <div id="k-front">
+          <div class="main-text" id="k-kanji">診ます</div>
+          <div class="sub-text" id="k-kana">みます</div>
+        </div>
+        <div id="k-back" class="hidden">
+          <div class="main-text" style="font-size:20px;" id="k-arti">memeriksa kesehatan</div>
+          <div class="sub-text" style="font-size:12px; color:#666;" id="k-contoh">医者に診てもらいます</div>
+        </div>
+        <div class="hint">💡 Ketuk kartu untuk pembalik jawaban</div>
+      </div>
+
+      <div class="controls">
+        <button onclick="prevKotoba()" class="action-btn btn-pink">◀ Kiri</button>
+        <span id="k-counter" style="font-size:12px; font-weight:bold;">1 / 10</span>
+        <button onclick="nextKotoba()" class="action-btn btn-pink">Kanan ▶</button>
+      </div>
+    </div>
+
+
+    <!-- KANJI TAB -->
+    <div id="tab-kanji" class="tab-content">
+      <div class="flashcard" style="border-color:#A2D2FF;" onclick="toggleKanjiCard()">
+        <span class="tag" style="background:#A2D2FF; color:#1E3A5F;" id="kj-strokes">13 Coretan</span>
+        <div id="kj-front">
+          <div class="main-text" style="font-size:60px;" id="kj-char">新</div>
+        </div>
+        <div id="kj-back" class="hidden">
+          <div class="main-text" style="font-size:20px;" id="kj-arti">Baru (New)</div>
+          <div style="font-size:12px; text-align:left; margin-top:8px;">
+            <p><strong>Onyomi:</strong> <span id="kj-onyomi">シン</span></p>
+            <p><strong>Kunyomi:</strong> <span id="kj-kunyomi">あたら.しい</span></p>
+            <p><strong>Contoh:</strong> <span id="kj-ex">新聞 (しんぶん)</span></p>
           </div>
         </div>
-
-        <!-- Navigation Buttons -->
-        <div class="flex items-center justify-between w-full gap-2">
-          <button onclick="prevKotoba()" class="flex-1 py-2.5 rounded-xl font-bold text-xs btn-3d-pink flex items-center justify-center gap-1">
-            <i class="fa-solid fa-chevron-left"></i> KIRI
-          </button>
-          <span class="text-xs font-bold text-gray-600 bg-white px-3 py-2 rounded-xl border border-pink-100" id="kotoba-counter">1 / 10</span>
-          <button onclick="nextKotoba()" class="flex-1 py-2.5 rounded-xl font-bold text-xs btn-3d-pink flex items-center justify-center gap-1">
-            KANAN <i class="fa-solid fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- TAB 2: KANJI N4 FLASHCARDS -->
-    <section id="tab-flashcard-kanji" class="tab-content hidden space-y-5">
-      <div class="bg-white p-3.5 rounded-2xl border border-blue-100 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <span class="text-xl">⛩️</span>
-          <h2 class="text-sm font-bold text-gray-800">Flashcard Kanji N4</h2>
-        </div>
-        <button onclick="shuffleKanji()" class="px-3 py-1.5 rounded-xl text-xs font-bold btn-3d-blue flex items-center gap-1">
-          <i class="fa-solid fa-shuffle"></i> ACAK
-        </button>
+        <div class="hint">💡 Ketuk kartu untuk detail Kanji</div>
       </div>
 
-      <!-- Card Display -->
-      <div class="flex flex-col items-center space-y-5">
-        <div class="w-full h-80 perspective-1000 cursor-pointer" onclick="flipCard('kanji-card')">
-          <div id="kanji-card" class="relative w-full h-full transform-style-3d rounded-3xl shadow-md border border-blue-100">
-            <!-- Front -->
-            <div class="absolute inset-0 backface-hidden bg-gradient-to-br from-white to-blue-50 rounded-3xl p-5 flex flex-col justify-between items-center text-center">
-              <span class="text-[11px] font-bold px-3 py-1 bg-pastel-blue text-blue-900 rounded-full" id="kanji-strokes">13 Coretan</span>
-              <div class="my-auto">
-                <h3 class="text-7xl font-bold text-gray-800 font-jp" id="kanji-char">新</h3>
-              </div>
-              <p class="text-[11px] text-pastel-muted flex items-center gap-1">
-                <i class="fa-solid fa-rotate"></i> Ketuk untuk detail & arti
-              </p>
-            </div>
-            <!-- Back -->
-            <div class="absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br from-pastel-blue/20 to-white rounded-3xl p-5 flex flex-col justify-between items-center text-center border-2 border-pastel-blue">
-              <div class="w-full text-left space-y-2.5">
-                <div class="text-center border-b border-blue-100 pb-1.5">
-                  <h4 class="text-lg font-bold text-blue-900" id="kanji-arti">Baru (New)</h4>
-                </div>
-                <div class="text-xs space-y-1">
-                  <p><span class="font-bold text-blue-800">Onyomi:</span> <span id="kanji-onyomi" class="font-jp">シン</span></p>
-                  <p><span class="font-bold text-blue-800">Kunyomi:</span> <span id="kanji-kunyomi" class="font-jp">あたら.しい</span></p>
-                </div>
-                <div class="bg-white p-2.5 rounded-xl border border-blue-100 text-xs">
-                  <p class="font-bold text-gray-700 mb-0.5">Contoh:</p>
-                  <p class="font-jp font-bold text-blue-900" id="kanji-contoh-jp">新聞 (しんぶん)</p>
-                  <p class="text-gray-600 text-[11px]" id="kanji-contoh-arti">Surat Kabar</p>
-                </div>
-              </div>
-              <p class="text-[11px] text-pastel-muted flex items-center gap-1 pt-1">
-                <i class="fa-solid fa-rotate"></i> Ketuk untuk kembali
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Navigation Buttons -->
-        <div class="flex items-center justify-between w-full gap-2">
-          <button onclick="prevKanji()" class="flex-1 py-2.5 rounded-xl font-bold text-xs btn-3d-blue flex items-center justify-center gap-1">
-            <i class="fa-solid fa-chevron-left"></i> KIRI
-          </button>
-          <span class="text-xs font-bold text-gray-600 bg-white px-3 py-2 rounded-xl border border-blue-100" id="kanji-counter">1 / 10</span>
-          <button onclick="nextKanji()" class="flex-1 py-2.5 rounded-xl font-bold text-xs btn-3d-blue flex items-center justify-center gap-1">
-            KANAN <i class="fa-solid fa-chevron-right"></i>
-          </button>
-        </div>
+      <div class="controls">
+        <button onclick="prevKanji()" class="action-btn btn-blue">◀ Kiri</button>
+        <span id="kj-counter" style="font-size:12px; font-weight:bold;">1 / 10</span>
+        <button onclick="nextKanji()" class="action-btn btn-blue">Kanan ▶</button>
       </div>
-    </section>
+    </div>
 
 
-    <!-- TAB 3: BUNPOU MINNA NO NIHONGO 2 -->
-    <section id="tab-bunpou" class="tab-content hidden space-y-4">
-      <div class="bg-white p-3.5 rounded-2xl border border-green-100 shadow-sm space-y-2">
-        <div class="flex items-center gap-2">
-          <span class="text-xl">📝</span>
-          <h2 class="text-sm font-bold text-gray-800">Tata Bahasa (Bunpou)</h2>
-        </div>
-        <input type="text" id="bunpou-search" oninput="filterBunpou()" placeholder="Cari tata bahasa atau bab..." class="w-full bg-pastel-bg border border-green-200 rounded-xl px-3 py-2 text-xs outline-none">
+    <!-- BUNPOU TAB -->
+    <div id="tab-bunpou" class="tab-content">
+      <div class="card">
+        <input type="text" id="bunpou-search" oninput="searchBunpou()" placeholder="🔍 Cari tata bahasa...">
+      </div>
+      <div id="bunpou-list"></div>
+    </div>
+
+
+    <!-- KUIS TAB -->
+    <div id="tab-kuis" class="tab-content">
+      <div id="quiz-start" class="card" style="text-align: center;">
+        <h3 style="margin-bottom: 8px;">🎯 Pilih Kuis</h3>
+        <button onclick="startQuiz('kotoba')" class="action-btn btn-pink" style="width:100%; margin-bottom:8px;">Kuis Kotoba</button>
+        <button onclick="startQuiz('kanji')" class="action-btn btn-blue" style="width:100%; margin-bottom:8px;">Kuis Kanji N4</button>
+        <button onclick="startQuiz('bunpou')" class="action-btn btn-mint" style="width:100%; margin-bottom:8px;">Kuis Bunpou</button>
       </div>
 
-      <!-- Bunpou List -->
-      <div id="bunpou-list" class="space-y-3">
-        <!-- Dynamic Content -->
-      </div>
-    </section>
-
-
-    <!-- TAB 4: KUIS INTERAKTIF -->
-    <section id="tab-kuis" class="tab-content hidden space-y-5">
-      <!-- Start Screen -->
-      <div class="bg-white p-5 rounded-3xl border border-purple-100 shadow-sm text-center" id="quiz-start-card">
-        <div class="w-14 h-14 bg-pastel-lavender rounded-2xl flex items-center justify-center text-2xl text-purple-900 mx-auto mb-3">
-          🎯
+      <div id="quiz-box" class="card hidden">
+        <div style="display:flex; justify-content:space-between; font-size:11px; margin-bottom:10px;">
+          <span id="q-category" style="font-weight:bold; color:#A287F4;">Kotoba</span>
+          <span id="q-progress">1 / 5</span>
         </div>
-        <h2 class="text-lg font-bold text-gray-800 mb-1">Uji Pemahaman</h2>
-        <p class="text-xs text-pastel-muted mb-5">Pilih kategori kuis yang ingin dipelajari:</p>
-
-        <div class="grid grid-cols-1 gap-2.5 mb-4">
-          <button onclick="startQuiz('kotoba')" class="p-3 rounded-2xl bg-pink-50 border border-pink-200 text-left flex items-center gap-3">
-            <i class="fa-solid fa-book text-pink-500 text-lg"></i>
-            <div>
-              <h4 class="font-bold text-gray-800 text-xs">Kuis Kotoba</h4>
-              <p class="text-[10px] text-gray-500">Kosakata Bab 26-50</p>
-            </div>
-          </button>
-          <button onclick="startQuiz('kanji')" class="p-3 rounded-2xl bg-blue-50 border border-blue-200 text-left flex items-center gap-3">
-            <i class="fa-solid fa-pen-nib text-blue-500 text-lg"></i>
-            <div>
-              <h4 class="font-bold text-gray-800 text-xs">Kuis Kanji N4</h4>
-              <p class="text-[10px] text-gray-500">Bacaan Onyomi/Kunyomi & Arti</p>
-            </div>
-          </button>
-          <button onclick="startQuiz('bunpou')" class="p-3 rounded-2xl bg-green-50 border border-green-200 text-left flex items-center gap-3">
-            <i class="fa-solid fa-layer-group text-green-500 text-lg"></i>
-            <div>
-              <h4 class="font-bold text-gray-800 text-xs">Kuis Bunpou</h4>
-              <p class="text-[10px] text-gray-500">Pola Kalimat MNN II</p>
-            </div>
-          </button>
-        </div>
-
-        <button onclick="startQuiz('mixed')" class="w-full py-3 rounded-2xl font-bold text-xs btn-3d-lavender flex items-center justify-center gap-2">
-          <i class="fa-solid fa-bolt"></i> KUIS CAMPURAN (SEMUA)
-        </button>
+        <h4 id="q-question" style="font-size:16px; margin-bottom:12px;">Pertanyaan</h4>
+        <div id="q-options"></div>
+        <div id="q-feedback" style="font-size:12px; margin:10px 0; padding:8px; border-radius:8px;" class="hidden"></div>
+        <button id="q-next-btn" onclick="nextQuestion()" class="action-btn btn-lavender" style="width:100%; margin-top:10px;" disabled>Selanjutnya ▶</button>
       </div>
 
-      <!-- Active Quiz -->
-      <div id="quiz-active-card" class="hidden bg-white p-5 rounded-3xl border border-purple-100 shadow-sm space-y-4">
-        <div class="flex items-center justify-between text-xs font-bold text-gray-500">
-          <span id="quiz-category-tag" class="px-2.5 py-0.5 bg-pastel-lavender text-purple-900 rounded-full text-[10px]">Kotoba</span>
-          <span id="quiz-progress-text" class="text-[11px]">Soal 1 dari 5</span>
-        </div>
-        
-        <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
-          <div id="quiz-progress-bar" class="bg-pastel-lavender-dark h-full transition-all duration-300" style="width: 20%"></div>
-        </div>
-
-        <div class="text-center py-2">
-          <p id="quiz-question" class="text-base font-bold text-gray-800 font-jp">Soal Pertanyaan</p>
-        </div>
-
-        <div id="quiz-options" class="grid grid-cols-1 gap-2">
-          <!-- Dynamic Options -->
-        </div>
-
-        <div id="quiz-feedback" class="hidden p-3 rounded-2xl text-xs font-medium border"></div>
-
-        <div class="flex justify-end pt-2">
-          <button id="quiz-next-btn" onclick="nextQuestion()" disabled class="w-full py-2.5 rounded-xl font-bold text-xs btn-3d-lavender opacity-50 cursor-not-allowed">
-            SOAL SELANJUTNYA <i class="fa-solid fa-chevron-right ml-1"></i>
-          </button>
-        </div>
+      <div id="quiz-result" class="card hidden" style="text-align:center;">
+        <h3>🏆 Kuis Selesai!</h3>
+        <p style="font-size:24px; font-weight:bold; color:#A287F4; margin: 10px 0;" id="q-score">80%</p>
+        <button onclick="resetQuiz()" class="action-btn btn-lavender" style="width:100%;">Coba Lagi</button>
       </div>
-
-      <!-- Quiz Result -->
-      <div id="quiz-result-card" class="hidden bg-white p-6 rounded-3xl border border-purple-100 shadow-sm text-center space-y-5">
-        <div class="w-16 h-16 bg-pastel-yellow rounded-full flex items-center justify-center text-3xl mx-auto">
-          🏆
-        </div>
-        <div>
-          <h3 class="text-xl font-bold text-gray-800">Kuis Selesai!</h3>
-          <p class="text-xs text-pastel-muted mt-0.5">Hasil latihan kamu:</p>
-        </div>
-
-        <div class="bg-pastel-bg p-4 rounded-2xl flex justify-around items-center border border-purple-50">
-          <div>
-            <p class="text-[10px] text-gray-500 font-bold">Skor Akhir</p>
-            <p id="result-score" class="text-2xl font-bold text-purple-700">80%</p>
-          </div>
-          <div class="w-px h-8 bg-gray-200"></div>
-          <div>
-            <p class="text-[10px] text-gray-500 font-bold">Benar / Total</p>
-            <p id="result-detail" class="text-2xl font-bold text-green-600">4 / 5</p>
-          </div>
-        </div>
-
-        <button onclick="resetQuiz()" class="w-full py-3 rounded-2xl font-bold text-xs btn-3d-lavender">
-          <i class="fa-solid fa-rotate-right mr-1"></i> COBA KUIS LAGI
-        </button>
-      </div>
-    </section>
+    </div>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t border-purple-100 py-3 text-center text-[10px] text-pastel-muted mt-6">
-    <p>Nihongo Master &copy; 2026 - MNN II & JLPT N4 Mobile App</p>
-  </footer>
-
-
-  <!-- JavaScript Logic -->
   <script>
-    // --- DATA KOTOBA ---
+    // Data Kotoba
     const kotobaData = [
-      { bab: 26, kanji: "診ます", kana: "みます", arti: "memeriksa kesehatan", contoh: "医者に診てもらいます。" },
-      { bab: 26, kanji: "探します", kana: "さがします", arti: "mencari barang hilang", contoh: "鍵を探しています。" },
-      { bab: 27, kanji: "飼います", kana: "かいます", arti: "memelihara hewan", contoh: "犬を飼っています。" },
-      { bab: 27, kanji: "建てます", kana: "たてます", arti: "membangun rumah/gedung", contoh: "新しい家を建てます。" },
-      { bab: 28, kanji: "売れます", kana: "うれます", arti: "terjual, laku", contoh: "パンがよく売れます。" },
-      { bab: 28, kanji: "真面目", kana: "まじめ[な]", arti: "rajin, sungguh-sungguh", contoh: "真面目な学生です。" },
-      { bab: 29, kanji: "開きます", kana: "あきます", arti: "terbuka (pintu/jendela)", contoh: "ドアが開きます。" },
-      { bab: 29, kanji: "壊れます", kana: "こわれます", arti: "rusak", contoh: "時計が壊れました。" },
-      { bab: 30, kanji: "貼ります", kana: "はりま", arti: "menempelkan", contoh: "カレンダーを貼ります。" },
-      { bab: 30, kanji: "飾ります", kana: "かざります", arti: "menghias, memajang", contoh: "花を飾ります。" }
+      { bab: 26, kanji: "診ます", kana: "みます", arti: "memeriksa kesehatan", contoh: "医者に診てもらいます" },
+      { bab: 26, kanji: "探します", kana: "さがします", arti: "mencari barang hilang", contoh: "鍵を探しています" },
+      { bab: 27, kanji: "飼います", kana: "かいます", arti: "memelihara hewan", contoh: "犬を飼っています" },
+      { bab: 28, kanji: "売れます", kana: "うれます", arti: "terjual, laku", contoh: "パンがよく売れます" }
     ];
 
-    // --- DATA KANJI N4 ---
+    // Data Kanji
     const kanjiData = [
-      { char: "新", strokes: "13 Coretan", arti: "Baru", onyomi: "シン", kunyomi: "あたら.しい", exJp: "新聞 (しんぶん)", exArti: "Surat Kabar" },
-      { char: "古", strokes: "5 Coretan", arti: "Lama / Kuno", onyomi: "コ", kunyomi: "ふる.い", exJp: "中古 (ちゅうこ)", exArti: "Barang Bekas" },
-      { char: "長", strokes: "8 Coretan", arti: "Panjang / Pemimpin", onyomi: "チョウ", kunyomi: "なが.い", exJp: "社長 (しゃちょう)", exArti: "Direktur Perusahaan" },
-      { char: "短", strokes: "12 Coretan", arti: "Pendek", onyomi: "タン", kunyomi: "みじか.い", exJp: "短時間 (たんじかん)", exArti: "Waktu Singkat" },
-      { char: "高", strokes: "10 Coretan", arti: "Tinggi / Mahal", onyomi: "コウ", kunyomi: "たか.い", exJp: "高校生 (こうこうせい)", exArti: "Siswa SMA" },
-      { char: "安", strokes: "6 Coretan", arti: "Murah / Aman", onyomi: "アン", kunyomi: "やす.い", exJp: "安心 (あんしん)", exArti: "Lega / Tenang" },
-      { char: "広", strokes: "5 Coretan", arti: "Luas", onyomi: "コウ", kunyomi: "ひろ.い", exJp: "広場 (ひろば)", exArti: "Lapangan" },
-      { char: "多", strokes: "6 Coretan", arti: "Banyak", onyomi: "タ", kunyomi: "おお.い", exJp: "多数 (たすう)", exArti: "Banyak Jumlah" },
-      { char: "少", strokes: "4 Coretan", arti: "Sedikit", onyomi: "ショウ", kunyomi: "すく.ない / すこ.し", exJp: "少年 (しょうねん)", exArti: "Anak Laki-Laki" },
-      { char: "早", strokes: "6 Coretan", arti: "Cepat / Awal", onyomi: "ソウ", kunyomi: "はや.い", exJp: "早朝 (そうちょう)", exArti: "Pagi-Pagi Sekali" }
+      { char: "新", strokes: "13 Coretan", arti: "Baru", onyomi: "シン", kunyomi: "あたら.しい", ex: "新聞 (しんぶん) - Koran" },
+      { char: "古", strokes: "5 Coretan", arti: "Lama / Kuno", onyomi: "コ", kunyomi: "ふる.i", ex: "中古 (ちゅうこ) - Barang Bekas" }
     ];
 
-    // --- DATA BUNPOU ---
+    // Data Bunpou
     const bunpouData = [
-      { bab: 26, pola: "〜んですか / 〜んです", penjelasan: "Digunakan untuk meminta/memberikan penjelasan latar belakang keadaan.", contohJp: "どうして遅れたんですか。バスが来なかったんです。", contohArti: "Mengapa kamu terlambat? Karena busnya tidak datang." },
-      { bab: 27, pola: "Kata Kerja Form Potensial (可能形)", penjelasan: "Menyatakan kemampuan/kemungkinan (Bisa/Dapat).", contohJp: "日本語の新聞が読めます。", contohArti: "Saya bisa membaca surat kabar bahasa Jepang." },
-      { bab: 28, pola: "〜ながら", penjelasan: "Menyatakan dua kegiatan yang dilakukan bersamaan (sambil).", contohJp: "音楽を聴きながら勉強します。", contohArti: "Saya belajar sambil mendengarkan musik." },
-      { bab: 29, pola: "Kata Kerja 自動詞 + ています", penjelasan: "Menyatakan kondisi/keadaan hasil dari kejadian sebelumnya.", contohJp: "ドアが開いています。", contohArti: "Pintunya sedang terbuka." },
-      { bab: 30, pola: "Kata Kerja 他動詞 + てあります", penjelasan: "Menyatakan keberadaan benda yang sengaja disiapkan.", contohJp: "壁にカレンダーが貼ってあります。", contohArti: "Di dinding tertempel kalender." }
+      { bab: 26, pola: "〜んですか / 〜んです", penjelasan: "Meminta atau menjelaskan alasan latar belakang.", contoh: "どうして遅れたんですか。" },
+      { bab: 27, pola: "Kata Kerja Form Potensial", penjelasan: "Menyatakan kemampuan (Bisa / Dapat).", contoh: "日本語が話せます。" }
     ];
 
-    // --- DATA KUIS ---
-    const quizQuestions = [
-      { category: "Kotoba", question: "Apa arti kosakata '診ます (みます)'?", options: ["Memeriksa kesehatan", "Mencari barang", "Membangun rumah", "Memelihara hewan"], answer: 0, explanation: "診ます (みます) berarti memeriksa kesehatan ke dokter." },
-      { category: "Kanji N4", question: "Onyomi dari Kanji '新' adalah...", options: ["コ", "シン", "タン", "アン"], answer: 1, explanation: "Kanji 新 memiliki bacaan Onyomi シン (shin)." },
-      { category: "Bunpou", question: "Pola kalimat untuk menyatakan 2 kegiatan bersamaan (sambil) adalah...", options: ["〜てあります", "〜んですか", "〜ながら", "〜てもいいです"], answer: 2, explanation: "Pola 〜ながら (Nagara) berarti 'sambil'." },
-      { category: "Kotoba", question: "Arti kosakata '探します (さがします)' adalah...", options: ["Menjual", "Mencari", "Membeli", "Merusak"], answer: 1, explanation: "探します artinya mencari barang yang hilang/dibutuhkan." },
-      { category: "Kanji N4", question: "Kanji '古' memiliki arti...", options: ["Baru", "Tinggi", "Lama / Kuno", "Sedikit"], answer: 2, explanation: "Kanji 古 (Furu-i) artinya lama atau kuno." }
+    // Data Quiz
+    const quizData = [
+      { category: "Kotoba", question: "Apa arti '診ます (みます)'?", options: ["Memeriksa kesehatan", "Mencari barang", "Membeli", "Menjual"], answer: 0, exp: "診ます berarti memeriksa kesehatan ke dokter." },
+      { category: "Kanji N4", question: "Onyomi dari Kanji '新' adalah...", options: ["コ", "シン", "タン", "アン"], answer: 1, exp: "Onyomi 新 adalah シン (shin)." }
     ];
 
-    // --- STATE MANAGEMENT ---
-    let currentKotobaIdx = 0;
-    let filteredKotoba = [...kotobaData];
-    let currentKanjiIdx = 0;
-    let currentQuizIdx = 0;
-    let quizScore = 0;
-    let selectedQuizList = [];
-    let isAnswered = false;
+    let currentK = 0, currentKj = 0, currentQ = 0, score = 0;
+    let selectedQ = [];
 
-    // --- INITIALIZATION ---
-    document.addEventListener("DOMContentLoaded", () => {
-      initKotobaTab();
-      initKanjiTab();
-      renderBunpou();
-      switchTab('flashcard-kotoba');
-    });
+    // Init App
+    window.onload = function() {
+      initKotobaSelect();
+      renderKotoba();
+      renderKanji();
+      renderBunpou(bunpouData);
+    };
 
-    // --- NAVIGATION LOGIC ---
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.getElementById(`tab-${tabId}`).classList.remove('hidden');
-
-      const navs = ['kotoba', 'kanji', 'bunpou', 'kuis'];
-      navs.forEach(nav => {
-        const btn = document.getElementById(`nav-${nav}`);
-        if (`flashcard-${nav}` === tabId || nav === tabId) {
-          btn.classList.add('ring-2', 'ring-purple-300');
-        } else {
-          btn.classList.remove('ring-2', 'ring-purple-300');
-        }
-      });
-    }
-
-    // --- FLIP CARD LOGIC ---
-    function flipCard(cardId) {
-      const card = document.getElementById(cardId);
-      card.classList.toggle('rotate-y-180');
-    }
-
-    // --- KOTOBA LOGIC ---
-    function initKotobaTab() {
-      const select = document.getElementById('kotoba-bab-select');
-      select.innerHTML = `<option value="all">Semua Bab</option>`;
-      for (let i = 26; i <= 50; i++) {
-        select.innerHTML += `<option value="${i}">Bab ${i}</option>`;
-      }
-      renderKotobaCard();
-    }
-
-    function filterKotobaBab() {
-      const val = document.getElementById('kotoba-bab-select').value;
-      if (val === 'all') {
-        filteredKotoba = [...kotobaData];
-      } else {
-        filteredKotoba = kotobaData.filter(item => item.bab == val);
-      }
-      currentKotobaIdx = 0;
-      renderKotobaCard();
-    }
-
-    function renderKotobaCard() {
-      if (filteredKotoba.length === 0) {
-        document.getElementById('kotoba-kanji').innerText = "Kosong";
-        document.getElementById('kotoba-kana').innerText = "";
-        document.getElementById('kotoba-arti').innerText = "Belum ada data";
-        document.getElementById('kotoba-tag').innerText = "N/A";
-        document.getElementById('kotoba-counter').innerText = "0 / 0";
-        return;
-      }
-
-      const item = filteredKotoba[currentKotobaIdx];
-      document.getElementById('kotoba-card').classList.remove('rotate-y-180');
+    // Navigation
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
       
-      setTimeout(() => {
-        document.getElementById('kotoba-tag').innerText = `Bab ${item.bab}`;
-        document.getElementById('kotoba-kanji').innerText = item.kanji;
-        document.getElementById('kotoba-kana').innerText = item.kana;
-        document.getElementById('kotoba-arti').innerText = item.arti;
-        document.getElementById('kotoba-contoh').innerText = item.contoh;
-        document.getElementById('kotoba-counter').innerText = `${currentKotobaIdx + 1} / ${filteredKotoba.length}`;
-      }, 150);
+      document.getElementById('tab-' + tabName).classList.add('active');
+      document.getElementById('nav-' + tabName).classList.add('active');
     }
 
-    function nextKotoba() {
-      if (filteredKotoba.length === 0) return;
-      currentKotobaIdx = (currentKotobaIdx + 1) % filteredKotoba.length;
-      renderKotobaCard();
+    // Kotoba Logic
+    function initKotobaSelect() {
+      let sel = document.getElementById('kotoba-select');
+      sel.innerHTML = '<option value="all">Semua Bab (26-50)</option>';
+      for(let i=26; i<=50; i++) sel.innerHTML += `<option value="${i}">Bab ${i}</option>`;
     }
 
-    function prevKotoba() {
-      if (filteredKotoba.length === 0) return;
-      currentKotobaIdx = (currentKotobaIdx - 1 + filteredKotoba.length) % filteredKotoba.length;
-      renderKotobaCard();
+    function renderKotoba() {
+      let item = kotobaData[currentK];
+      document.getElementById('k-tag').innerText = "Bab " + item.bab;
+      document.getElementById('k-kanji').innerText = item.kanji;
+      document.getElementById('k-kana').innerText = item.kana;
+      document.getElementById('k-arti').innerText = item.arti;
+      document.getElementById('k-contoh').innerText = item.contoh;
+      document.getElementById('k-counter').innerText = (currentK + 1) + " / " + kotobaData.length;
+      
+      document.getElementById('k-front').classList.remove('hidden');
+      document.getElementById('k-back').classList.add('hidden');
     }
 
-    // --- KANJI LOGIC ---
-    function initKanjiTab() {
-      renderKanjiCard();
+    function toggleKotobaCard() {
+      document.getElementById('k-front').classList.toggle('hidden');
+      document.getElementById('k-back').classList.toggle('hidden');
     }
 
-    function renderKanjiCard() {
-      const item = kanjiData[currentKanjiIdx];
-      document.getElementById('kanji-card').classList.remove('rotate-y-180');
+    function nextKotoba() { currentK = (currentK + 1) % kotobaData.length; renderKotoba(); }
+    function prevKotoba() { currentK = (currentK - 1 + kotobaData.length) % kotobaData.length; renderKotoba(); }
+    function filterKotoba() { currentK = 0; renderKotoba(); }
 
-      setTimeout(() => {
-        document.getElementById('kanji-strokes').innerText = item.strokes;
-        document.getElementById('kanji-char').innerText = item.char;
-        document.getElementById('kanji-arti').innerText = item.arti;
-        document.getElementById('kanji-onyomi').innerText = item.onyomi;
-        document.getElementById('kanji-kunyomi').innerText = item.kunyomi;
-        document.getElementById('kanji-contoh-jp').innerText = item.exJp;
-        document.getElementById('kanji-contoh-arti').innerText = item.exArti;
-        document.getElementById('kanji-counter').innerText = `${currentKanjiIdx + 1} / ${kanjiData.length}`;
-      }, 150);
+    // Kanji Logic
+    function renderKanji() {
+      let item = kanjiData[currentKj];
+      document.getElementById('kj-strokes').innerText = item.strokes;
+      document.getElementById('kj-char').innerText = item.char;
+      document.getElementById('kj-arti').innerText = item.arti;
+      document.getElementById('kj-onyomi').innerText = item.onyomi;
+      document.getElementById('kj-kunyomi').innerText = item.kunyomi;
+      document.getElementById('kj-ex').innerText = item.ex;
+      document.getElementById('kj-counter').innerText = (currentKj + 1) + " / " + kanjiData.length;
+
+      document.getElementById('kj-front').classList.remove('hidden');
+      document.getElementById('kj-back').classList.add('hidden');
     }
 
-    function nextKanji() {
-      currentKanjiIdx = (currentKanjiIdx + 1) % kanjiData.length;
-      renderKanjiCard();
+    function toggleKanjiCard() {
+      document.getElementById('kj-front').classList.toggle('hidden');
+      document.getElementById('kj-back').classList.toggle('hidden');
     }
 
-    function prevKanji() {
-      currentKanjiIdx = (currentKanjiIdx - 1 + kanjiData.length) % kanjiData.length;
-      renderKanjiCard();
-    }
+    function nextKanji() { currentKj = (currentKj + 1) % kanjiData.length; renderKanji(); }
+    function prevKanji() { currentKj = (currentKj - 1 + kanjiData.length) % kanjiData.length; renderKanji(); }
 
-    function shuffleKanji() {
-      for (let i = kanjiData.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [kanjiData[i], kanjiData[j]] = [kanjiData[j], kanjiData[i]];
-      }
-      currentKanjiIdx = 0;
-      renderKanjiCard();
-    }
-
-    // --- BUNPOU LOGIC ---
-    function renderBunpou(data = bunpouData) {
-      const container = document.getElementById('bunpou-list');
-      container.innerHTML = '';
-
-      if (data.length === 0) {
-        container.innerHTML = `<div class="p-6 text-center text-xs text-pastel-muted">Tata bahasa tidak ditemukan.</div>`;
-        return;
-      }
-
+    // Bunpou Logic
+    function renderBunpou(data) {
+      let list = document.getElementById('bunpou-list');
+      list.innerHTML = '';
       data.forEach(item => {
-        const card = document.createElement('div');
-        card.className = "bg-white p-4 rounded-2xl border border-green-100 shadow-sm space-y-2";
-        card.innerHTML = `
-          <div class="flex items-center justify-between border-b border-green-50 pb-1.5">
-            <span class="px-2.5 py-0.5 bg-pastel-mint text-green-900 text-[10px] font-bold rounded-full">Bab ${item.bab}</span>
-            <span class="text-[10px] text-pastel-muted">Minna II</span>
-          </div>
-          <h3 class="text-base font-bold text-gray-800 font-jp">${item.pola}</h3>
-          <p class="text-xs text-gray-600">${item.penjelasan}</p>
-          <div class="bg-pastel-bg p-2.5 rounded-xl border border-green-100 text-xs space-y-0.5">
-            <p class="font-bold text-green-900 text-[11px]">Contoh Kalimat:</p>
-            <p class="font-jp text-xs text-gray-800">${item.contohJp}</p>
-            <p class="text-gray-500 italic text-[11px]">${item.contohArti}</p>
+        list.innerHTML += `
+          <div class="card" style="border-left: 4px solid #BFFCC6;">
+            <span style="font-size:10px; background:#BFFCC6; padding:2px 6px; border-radius:10px; font-weight:bold;">Bab ${item.bab}</span>
+            <h4 style="margin:6px 0;">${item.pola}</h4>
+            <p style="font-size:12px; color:#555;">${item.penjelasan}</p>
+            <p style="font-size:11px; color:#888; margin-top:4px;"><i>Contoh: ${item.contoh}</i></p>
           </div>
         `;
-        container.appendChild(card);
       });
     }
 
-    function filterBunpou() {
-      const query = document.getElementById('bunpou-search').value.toLowerCase();
-      const filtered = bunpouData.filter(item => 
-        item.pola.toLowerCase().includes(query) ||
-        item.penjelasan.toLowerCase().includes(query) ||
-        `bab ${item.bab}`.includes(query)
-      );
-      renderBunpou(filtered);
+    function searchBunpou() {
+      let q = document.getElementById('bunpou-search').value.toLowerCase();
+      let res = bunpouData.filter(b => b.pola.toLowerCase().includes(q) || b.penjelasan.toLowerCase().includes(q));
+      renderBunpou(res);
     }
 
-    // --- KUIS LOGIC ---
-    function startQuiz(type) {
-      if (type === 'kotoba') {
-        selectedQuizList = quizQuestions.filter(q => q.category === 'Kotoba');
-      } else if (type === 'kanji') {
-        selectedQuizList = quizQuestions.filter(q => q.category === 'Kanji N4');
-      } else if (type === 'bunpou') {
-        selectedQuizList = quizQuestions.filter(q => q.category === 'Bunpou');
-      } else {
-        selectedQuizList = [...quizQuestions];
-      }
-
-      selectedQuizList.sort(() => Math.random() - 0.5);
-      currentQuizIdx = 0;
-      quizScore = 0;
-      
-      document.getElementById('quiz-start-card').classList.add('hidden');
-      document.getElementById('quiz-result-card').classList.add('hidden');
-      document.getElementById('quiz-active-card').classList.remove('hidden');
-
-      renderQuizQuestion();
+    // Quiz Logic
+    function startQuiz(cat) {
+      selectedQ = quizData;
+      currentQ = 0; score = 0;
+      document.getElementById('quiz-start').classList.add('hidden');
+      document.getElementById('quiz-box').classList.remove('hidden');
+      renderQuiz();
     }
 
-    function renderQuizQuestion() {
-      isAnswered = false;
-      const q = selectedQuizList[currentQuizIdx];
-
-      document.getElementById('quiz-category-tag').innerText = q.category;
-      document.getElementById('quiz-progress-text').innerText = `Soal ${currentQuizIdx + 1} dari ${selectedQuizList.length}`;
-      document.getElementById('quiz-progress-bar').style.width = `${((currentQuizIdx + 1) / selectedQuizList.length) * 100}%`;
-      document.getElementById('quiz-question').innerText = q.question;
-
-      const feedback = document.getElementById('quiz-feedback');
-      feedback.classList.add('hidden');
+    function renderQuiz() {
+      let q = selectedQ[currentQ];
+      document.getElementById('q-category').innerText = q.category;
+      document.getElementById('q-progress').innerText = (currentQ + 1) + " / " + selectedQ.length;
+      document.getElementById('q-question').innerText = q.question;
       
-      const nextBtn = document.getElementById('quiz-next-btn');
-      nextBtn.disabled = true;
-      nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
-
-      const optionsContainer = document.getElementById('quiz-options');
-      optionsContainer.innerHTML = '';
-
+      let optDiv = document.getElementById('q-options');
+      optDiv.innerHTML = '';
       q.options.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.className = `p-3 rounded-2xl text-left font-semibold text-xs border border-purple-100 bg-white flex items-center justify-between font-jp`;
-        btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-gray-300"></i>`;
-        btn.onclick = () => checkQuizAnswer(idx, btn);
-        optionsContainer.appendChild(btn);
+        optDiv.innerHTML += `<button class="option-btn" onclick="checkAnswer(${idx}, this)">${opt}</button>`;
       });
+
+      document.getElementById('q-feedback').classList.add('hidden');
+      document.getElementById('q-next-btn').disabled = true;
     }
 
-    function checkQuizAnswer(selectedIdx, btnElement) {
-      if (isAnswered) return;
-      isAnswered = true;
+    function checkAnswer(idx, btn) {
+      let q = selectedQ[currentQ];
+      let allBtns = document.querySelectorAll('.option-btn');
+      allBtns.forEach(b => b.disabled = true);
 
-      const q = selectedQuizList[currentQuizIdx];
-      const optionsButtons = document.getElementById('quiz-options').children;
-
-      if (selectedIdx === q.answer) {
-        quizScore++;
-        btnElement.className = "p-3 rounded-2xl text-left font-semibold text-xs border-2 border-green-400 bg-green-50 text-green-900 flex items-center justify-between font-jp";
-        btnElement.querySelector('i').className = "fa-solid fa-circle-check text-green-500 text-base";
+      if(idx === q.answer) {
+        btn.classList.add('correct');
+        score++;
       } else {
-        btnElement.className = "p-3 rounded-2xl text-left font-semibold text-xs border-2 border-red-300 bg-red-50 text-red-900 flex items-center justify-between font-jp";
-        btnElement.querySelector('i').className = "fa-solid fa-circle-xmark text-red-400 text-base";
-
-        optionsButtons[q.answer].className = "p-3 rounded-2xl text-left font-semibold text-xs border-2 border-green-400 bg-green-50 text-green-900 flex items-center justify-between font-jp";
-        optionsButtons[q.answer].querySelector('i').className = "fa-solid fa-circle-check text-green-500 text-base";
+        btn.classList.add('wrong');
+        allBtns[q.answer].classList.add('correct');
       }
 
-      const feedback = document.getElementById('quiz-feedback');
-      feedback.className = `p-3 rounded-2xl text-[11px] font-medium border ${selectedIdx === q.answer ? 'bg-green-50 border-green-200 text-green-900' : 'bg-red-50 border-red-200 text-red-900'}`;
-      feedback.innerHTML = `<strong>Pembahasan:</strong> ${q.explanation}`;
-      feedback.classList.remove('hidden');
-
-      const nextBtn = document.getElementById('quiz-next-btn');
-      nextBtn.disabled = false;
-      nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      let fb = document.getElementById('q-feedback');
+      fb.innerHTML = "<b>Pembahasan:</b> " + q.exp;
+      fb.classList.remove('hidden');
+      
+      document.getElementById('q-next-btn').disabled = false;
     }
 
     function nextQuestion() {
-      if (!isAnswered) return;
-
-      currentQuizIdx++;
-      if (currentQuizIdx < selectedQuizList.length) {
-        renderQuizQuestion();
+      currentQ++;
+      if(currentQ < selectedQ.length) {
+        renderQuiz();
       } else {
-        showQuizResult();
+        document.getElementById('quiz-box').classList.add('hidden');
+        document.getElementById('quiz-result').classList.remove('hidden');
+        document.getElementById('q-score').innerText = Math.round((score / selectedQ.length) * 100) + "%";
       }
     }
 
-    function showQuizResult() {
-      document.getElementById('quiz-active-card').classList.add('hidden');
-      document.getElementById('quiz-result-card').classList.remove('hidden');
-
-      const percentage = Math.round((quizScore / selectedQuizList.length) * 100);
-      document.getElementById('result-score').innerText = `${percentage}%`;
-      document.getElementById('result-detail').innerText = `${quizScore} / ${selectedQuizList.length}`;
-    }
-
     function resetQuiz() {
-      document.getElementById('quiz-result-card').classList.add('hidden');
-      document.getElementById('quiz-start-card').classList.remove('hidden');
+      document.getElementById('quiz-result').classList.add('hidden');
+      document.getElementById('quiz-start').classList.remove('hidden');
     }
   </script>
 </body>
 </html>
+
